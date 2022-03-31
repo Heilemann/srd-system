@@ -1,0 +1,13 @@
+{
+  "name": "5E SRD",
+  "version": "1.0.0",
+  "description": "5E SRD system. Read more: https://dnd.wizards.com/products/tabletop-games/rpg-products/5e-srd",
+  "documents": [
+    {
+      "type": "character",
+      "name": "Character",
+      "description": "A character sheet",
+      "template": "character.hbs"
+    }
+  ]
+}
