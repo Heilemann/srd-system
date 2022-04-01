@@ -1,1 +1,24 @@
-<div>SRD Character Sheet</div>
+<script>
+  function drag(e) { const { type, id } = e.target.dataset
+  e.dataTransfer.setData(type, id) } const derp = 'clicked!' function clicked(e)
+  { alert(derp) }
+</script>
+<div>
+  <p style='color: yellow'>Character Document Begins:</p>
+  <div
+    draggable='true'
+    data-type='character'
+    data-id='iframe-character'
+    style='background: rgba(0,255,0,1); height: 50px'
+    ondragstart='drag(event)'
+  >iFrame Character</div>
+  <div
+    droppable
+    data-acceptTypes='character'
+    style='background: rgba(255,255,0,1); height: 200px'
+    onclick='clicked()'
+  >
+    Drop characters here
+  </div>
+  <input name='myInput' />
+</div>
