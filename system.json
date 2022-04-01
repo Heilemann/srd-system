@@ -1,13 +1,22 @@
 {
   "name": "5E SRD",
   "version": "1.0.0",
+  "author": "Michael Heilemann",
   "description": "5E SRD system. Read more: https://dnd.wizards.com/products/tabletop-games/rpg-products/5e-srd",
   "documents": [
     {
       "type": "character",
       "name": "Character",
       "description": "A character sheet",
-      "template": "character.hbs"
+      "template": "src/hbs/character.hbs"
     }
-  ]
+  ],
+  "grid": {
+    "type": "square",
+    "width": "12",
+    "height": "12",
+    "size": "1",
+    "unit": "m"
+  },
+  "license": "NA"
 }
