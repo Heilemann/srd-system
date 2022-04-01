@@ -1,7 +1,14 @@
 <script>
-  function drag(e) { const { type, id } = e.target.dataset
-  e.dataTransfer.setData(type, id) } const derp = 'clicked!' function clicked(e)
-  { alert(derp) }
+  function drag(e) { 
+    const { type, id } = e.target.dataset
+    e.dataTransfer.setData(type, id) 
+  } 
+
+  const derp = 'clicked!' 
+
+  function clicked(e) {
+    alert(derp)
+  }
 </script>
 <div>
   <p style='color: yellow'>Character Document Begins:</p>
