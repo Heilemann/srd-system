@@ -6,14 +6,16 @@
   "templates": [
     {
       "type": "character",
-      "name": "Character",
-      "description": "A character sheet",
+      "singularName": "Character",
+      "pluralName": "Characters",
+      "description": "A player character.",
       "template": "src/hbs/character.hbs"
     },
     {
       "type": "equipment",
-      "name": "Equipment",
-      "description": "An equipment sheet",
+      "singularName": "Equipment",
+      "pluralName": "Equipment",
+      "description": "A piece of equipment.",
       "template": "src/hbs/equipment.hbs"
     }
   ],
