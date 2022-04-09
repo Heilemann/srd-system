@@ -9,14 +9,14 @@
       "singularName": "Character",
       "pluralName": "Characters",
       "description": "A player character.",
-      "template": "src/hbs/character.hbs"
+      "file": "src/hbs/character.hbs"
     },
     {
       "type": "equipment",
       "singularName": "Equipment",
       "pluralName": "Equipment",
       "description": "A piece of equipment.",
-      "template": "src/hbs/equipment.hbs"
+      "file": "src/hbs/equipment.hbs"
     }
   ],
   "grid": {
