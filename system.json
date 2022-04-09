@@ -9,6 +9,12 @@
       "name": "Character",
       "description": "A character sheet",
       "template": "src/hbs/character.hbs"
+    },
+    {
+      "type": "equipment",
+      "name": "Equipment",
+      "description": "An equipment sheet",
+      "template": "src/hbs/equipment.hbs"
     }
   ],
   "grid": {

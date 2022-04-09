@@ -1,0 +1,16 @@
+<script>
+  function drag(e) { 
+    const { type, id } = e.target.dataset
+    e.dataTransfer.setData(type, id) 
+  } 
+</script>
+<div>
+  <p style='color: yellow'>Equipment Document Begins:</p>
+  <div
+    draggable='true'
+    data-type='equipment'
+    data-id='iframe-equipment'
+    style='background: rgba(0,255,0,1); height: 50px'
+    ondragstart='drag(event)'
+  >iFrame Equipment</div>
+</div>
