@@ -4,11 +4,6 @@
     e.dataTransfer.setData(type, id) 
   } 
 
-  const derp = 'clicked!' 
-
-  function clicked(e) {
-    alert(derp)
-  }
 </script>
 <div>
   <p style='color: black'>Character Document Begins:</p>
@@ -22,10 +17,9 @@
   >iFrame Character</div>
   <div
     droppable
-    data-acceptTypes='character'
+    data-acceptTypes='equipment'
     style='background: rgba(255,255,0,1); height: 200px'
-    onclick='clicked()'
   >
-    Drop characters here
+    Drop equipment here
   </div>
 </div>
