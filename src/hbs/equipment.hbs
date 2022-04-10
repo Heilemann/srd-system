@@ -6,11 +6,16 @@
 </script>
 <div>
   <p style='color: yellow'>Equipment Document Begins:</p>
+  <label for='name'>Name:</label>
+  <input name='name' />
+
+  <label for='weight'>Weight:</label>
+  <input name='weight' />
   <div
     draggable='true'
     data-type='equipment'
     data-id='iframe-equipment'
-    style='background: rgba(0,255,0,1); height: 50px'
+    style='background: rgba(0,0,255,1); height: 50px'
     ondragstart='drag(event)'
   >iFrame Equipment</div>
 </div>
