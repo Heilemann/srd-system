@@ -4,18 +4,21 @@
     e.dataTransfer.setData(type, id) 
   } 
 </script>
-<br>
-  <p style='color: yellow'>Equipment Document Begins:</p>
-  <label for='name'>Name:</label>
-  <input name='name' /></br>
 
+<p>
+  <label for='name'>Name:</label>
+  <input name='name' />
+</p>
+
+<p>
   <label for='weight'>Weight:</label>
   <input name='weight' />
-  <div
-    draggable='true'
-    data-type='equipment'
-    data-id='iframe-equipment'
-    style='background: rgba(0,0,255,1); height: 50px'
-    ondragstart='drag(event)'
-  >iFrame Equipment</div>
+</p>
+<div
+  draggable='true'
+  data-type='equipment'
+  data-id='iframe-equipment'
+  style='background: rgba(0,0,128,1); height: 50px'
+  ondragstart='drag(event)'
+>iFrame Equipment</div>
 </div>
