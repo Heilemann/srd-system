@@ -1,23 +1,19 @@
 <script>
-  function drag(e) { 
-    const { type, id } = e.target.dataset
-    e.dataTransfer.setData(type, id) 
-  } 
+  function drag(e) { const { type, id } = e.target.dataset
+  e.dataTransfer.setData(type, id) }
 
 </script>
 <div>
   <p style='color: black'>Character Document Begins:</p>
   <input name='name' />
   <div
-    draggable='true'
-    data-type='character'
-    data-id='iframe-character'
+    id='iframe-character-fake-id'
+    draggable='character'
     style='background: rgba(0,255,0,1); height: 50px'
     ondragstart='drag(event)'
-  >iFrame Character</div>
+  >Draggable iFrame Character</div>
   <div
-    droppable
-    data-acceptTypes='equipment'
+    droppable='equipment'
     style='background: rgba(255,255,0,1); height: 200px'
   >
     Drop equipment here
