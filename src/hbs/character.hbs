@@ -13,6 +13,7 @@
 <div>
   <p style='color: black'>Character Document Begins:</p>
   <input name='name' />
+  <button onclick='clicked()'>Click Me</button>
   <div id='iframe-character-fake-id' draggable='character' style='background: rgba(0,255,0,1); height: 50px'
     ondragstart='drag(event)'>Draggable iFrame Character</div>
   <div onclick="clicked()" ondrop="(e) => {console.log('dropped inside frame', e)}" droppable='equipment'
