@@ -12,13 +12,17 @@
   }
 
   console.log('iframe script tag loaded and working')
+
+  function drop(e) {
+    console.log('dropped inside iframe', e)
+  }
 </script>
 <p style='color: black'>Character Document Begins:</p>
 <input name='name' />
 <button onclick='console.log("click")'>Click Me</button>
 <div id='iframe-character-fake-id' draggable='character' style='background: rgba(0,255,0,1); height: 50px'
   ondragstart='drag(event)'>Draggable iFrame Character</div>
-<div onclick="console.log('clicked1')" ondrop="(e) => {console.log('dropped inside frame', e)}" droppable='equipment'
+<div onclick="console.log('clicked1')" ondrop="drop()" droppable='equipment'
   style='background: rgba(255,255,0,1); height: 200px'>
   Drop equipment here
 </div>
