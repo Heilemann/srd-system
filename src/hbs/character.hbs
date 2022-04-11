@@ -7,6 +7,7 @@
   const derp = 'clicked!'
 
   function clicked(e) {
+    e.stopPropagation()
     alert(derp)
   }
 </script>
