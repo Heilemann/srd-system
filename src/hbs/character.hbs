@@ -1,23 +1,22 @@
 <script>
-  function drag(e) { const { type, id } = e.target.dataset
-  e.dataTransfer.setData(type, id) }
+  function drag(e) {
+    const { type, id } = e.target.dataset
+    e.dataTransfer.setData(type, id)
+  }
 
+  const derp = 'clicked!'
+
+  function clicked(e) {
+    alert(derp)
+  }
 </script>
 <div>
   <p style='color: black'>Character Document Begins:</p>
   <input name='name' />
-  <div
-    id='iframe-character-fake-id'
-    draggable='character'
-    style='background: rgba(0,255,0,1); height: 50px'
-    ondragstart='drag(event)'
-  >Draggable iFrame Character</div>
-  <div
-    onclick="(e) => {alert('clicked in frame, you are a legend!')}"
-    ondrop="(e) => {console.log('dropped inside frame', e)}"
-    droppable='equipment'
-    style='background: rgba(255,255,0,1); height: 200px'
-  >
+  <div id='iframe-character-fake-id' draggable='character' style='background: rgba(0,255,0,1); height: 50px'
+    ondragstart='drag(event)'>Draggable iFrame Character</div>
+  <div onclick="clicked()" ondrop="(e) => {console.log('dropped inside frame', e)}" droppable='equipment'
+    style='background: rgba(255,255,0,1); height: 200px'>
     Drop equipment here
   </div>
 </div>
