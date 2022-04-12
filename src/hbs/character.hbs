@@ -23,11 +23,13 @@
     console.log('dragenter')
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
+    return false
   }
 
   function dragOverHandler(e) {
     e.preventDefault()
     console.log('dragover')
+    return false
   }
 
   function drop(e) {
