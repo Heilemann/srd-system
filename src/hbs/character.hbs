@@ -21,19 +21,20 @@
 
   function dragEnterHandler(e) {
     console.log('dragenter')
-    e.preventDefault()
+    e.stopPropagation()
     e.dataTransfer.dropEffect = 'move'
     return false
   }
 
   function dragOverHandler(e) {
-    e.preventDefault()
+    e.stopPropagation()
     console.log('dragover')
     return false
   }
 
   function drop(e) {
     console.log('dropped inside iframe', e)
+    e.stopPropagation()
   }
 </script>
 <p style='color: black'>Character Document Begins:</p>
