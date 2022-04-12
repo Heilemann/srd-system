@@ -8,8 +8,8 @@
 
   function clicked(e) {
     e.stopPropagation()
-    console.log(e)
-    alert(derp)
+    const target = document.querySelector('.dropElement')
+    simulateDragDrop(e.target, e.target.dataset.id)
   }
 
   console.log('iframe script tag loaded and working')
@@ -33,13 +33,57 @@
   function drop(e) {
     console.log('dropped inside iframe', e)
   }
+
+  function simulateDragDrop(sourceNode, destinationNode) {
+    var EVENT_TYPES = {
+      DRAG_END: 'dragend',
+      DRAG_START: 'dragstart',
+      DROP: 'drop'
+    }
+
+    function createCustomEvent(type) {
+      var event = new CustomEvent("CustomEvent")
+      event.initCustomEvent(type, true, true, null)
+      event.dataTransfer = {
+        data: {
+        },
+        setData: function (type, val) {
+          this.data[type] = val
+        },
+        getData: function (type) {
+          return this.data[type]
+        }
+      }
+      return event
+    }
+
+    function dispatchEvent(node, type, event) {
+      if (node.dispatchEvent) {
+        return node.dispatchEvent(event)
+      }
+      if (node.fireEvent) {
+        return node.fireEvent("on" + type, event)
+      }
+    }
+
+    var event = createCustomEvent(EVENT_TYPES.DRAG_START)
+    dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event)
+
+    var dropEvent = createCustomEvent(EVENT_TYPES.DROP)
+    dropEvent.dataTransfer = event.dataTransfer
+    dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent)
+
+    var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END)
+    dragEndEvent.dataTransfer = event.dataTransfer
+    dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent)
+  }
 </script>
 <p style='color: black'>Character Document Begins:</p>
 <input name='name' />
-<button onclick='console.log("click")'>Click Me</button>
+<button onclick="clicked(event)">Click Me</button>
 <div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
   style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div>
-<div onclick="clicked(event)" ondragenter="dragEnterHandler(event)" ondragover='dragOverHandler(event)'
+<div className='dropElement' ondragenter="dragEnterHandler(event)" ondragover='dragOverHandler(event)'
   ondrop="drop(event)" droppable='equipment' style='background: rgba(255,255,0,1); height: 200px'>
   Drop equipment here
 </div>
