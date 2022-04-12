@@ -9,7 +9,7 @@
   function clicked(e) {
     e.stopPropagation()
     const target = document.querySelector('.dropElement')
-    simulateDragDrop(e.target, e.target.dataset.id)
+    simulateDragDrop(e.target, target)
   }
 
   console.log('iframe script tag loaded and working')
