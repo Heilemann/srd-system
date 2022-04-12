@@ -4,15 +4,11 @@
     e.dataTransfer.setData(type, id)
   }
 
-  const derp = 'clicked!'
-
   function clicked(e) {
     e.stopPropagation()
     const target = document.querySelector('.dropElement')
     simulateDragDrop(e.target, target)
   }
-
-  console.log('iframe script tag loaded and working')
 
   function dragStartHandler(e) {
     console.log('dragstart')
