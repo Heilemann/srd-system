@@ -21,15 +21,13 @@
 
   function dragEnterHandler(e) {
     console.log('dragenter')
-    // e.preventDefault()
+    e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
-    return false
   }
 
   function dragOverHandler(e) {
-    // e.preventDefault()
+    e.preventDefault()
     console.log('dragover')
-    return false
   }
 
   function drop(e) {
@@ -39,7 +37,7 @@
 <p style='color: black'>Character Document Begins:</p>
 <input name='name' />
 <button onclick='console.log("click")'>Click Me</button>
-<div id='equipment' draggable='true' ondragstart='dragStartHandler(event)'
+<div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
   style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div>
 <div onclick="clicked(event)" ondragenter="dragEnterHandler(event)" ondragover='dragOverHandler(event)'
   ondrop="drop(event)" droppable='equipment' style='background: rgba(255,255,0,1); height: 200px'>
