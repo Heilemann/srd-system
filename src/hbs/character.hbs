@@ -72,11 +72,26 @@
     var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END)
     dragEndEvent.dataTransfer = event.dataTransfer
     dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent)
+
+    const documents = [
+      {
+        id: '123',
+        type: 'equipment',
+        values: {
+          name: 'Sword',
+          description: 'A sword',
+          weight: '1',
+          value: '10'
+        }
+      }
+    ]
+    const ids = ['123']
   }
 </script>
 
 <input name='name' />
-
+{{name}}
+{{data.name}}
 <button onclick="clicked(event)">Click Me</button>
 
 <input type="number" name="age" />
@@ -92,6 +107,23 @@
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
 </select>
+
+<div droppable="equipment">
+  {{document '123'}}
+  {{#with equipment}}
+    <p>Equipment List</p>
+    <ul>
+      {{#each this}}
+        <li>
+          <span>{{this.values.name}}</span>
+          <span>{{this.values.description}}</span>
+          <span>{{this.values.weight}}</span>
+          <span>{{this.values.value}}</span>
+        </li>
+      {{/each}}
+      <p></p>
+  {{/with}}
+</div>
 
 <div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
   style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div>
