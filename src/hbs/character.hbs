@@ -9,8 +9,8 @@
 
   {{#eachref equipment}}
     <div>
-      <button data-id='{{id}}' data-action='remove'>-</button>
-      <span style="display: inline-block; width: 200px">{{name}}</span>
+      <button data-action='remove' data-id='{{index}}' data-type='equipment'>-</button>
+      <span style='display: inline-block; width: 200px'>{{name}}</span>
     </div>
   {{/eachref}}
   <!-- <button type="equipment" name="add">add equipment</button> -->
