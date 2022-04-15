@@ -8,11 +8,9 @@
   <p>Drop equipment here.</p>
 
   {{#eachref equipment}}
-    <div draggable='true' id={{id}}
-      style='background-color: rgba(0,255,0,1); height: 50px; border-bottom: 1px solid red;'>
+    <div>
+      {{#remove}}-{{/remove}}
       <span style="display: inline-block; width: 200px">{{name}}</span>
-      {{#remove}}remove{{/remove}}
-      </span>
     </div>
   {{/eachref}}
   <!-- <button type="equipment" name="add">add equipment</button> -->
