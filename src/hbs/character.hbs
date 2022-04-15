@@ -7,13 +7,13 @@
 <div id='backpack' droppable='equipment' style='background-color: rgba(255,255,0,1); height: 200px; padding: 10px'>
   <p>Drop equipment here.</p>
 
-  {{#each equipment}}
+  {{#eachref equipment}}
     <div draggable='true' id={{id}}
       style='background-color: rgba(0,255,0,1); height: 50px; border-bottom: 1px solid red;'>
       <span style="display: inline-block; width: 200px">{{name}}</span>
       <button id="{{name}}" name="remove">remove</button>
       </span>
-  {{/each}}
+  {{/eachref}}
   <button type="equipment" name="add">add equipment</button>
 
 </div>
