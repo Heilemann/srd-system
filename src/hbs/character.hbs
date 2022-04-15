@@ -4,11 +4,12 @@
 <!-- <div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
   style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div> -->
 
-<div id='backpack' droppable='equipment' style='background: rgba(255,255,0,1); height: 200px; padding: 10px'>
+<div id='backpack' droppable='equipment' style='background-color: rgba(255,255,0,1); height: 200px; padding: 10px'>
   <p>Drop equipment here.</p>
 
   {{#each equipment}}
-    <div draggable='true' id={{id}} style='background: rgba(0,255,0,1); height: 50px; border-bottom: 1px solid red;'>
+    <div draggable='true' id={{id}}
+      style='background-color: rgba(0,255,0,1); height: 50px; border-bottom: 1px solid red;'>
       <span style="display: inline-block; width: 200px">{{name}}</span> <button>remove</button>
       </span>
   {{/each}}
