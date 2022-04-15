@@ -9,7 +9,7 @@
 
   {{#eachref equipment}}
     <div>
-      {{#remove}}-{{/remove}}
+      <button data-id={{id}} data-action='remove'>-</button>
       <span style="display: inline-block; width: 200px">{{name}}</span>
     </div>
   {{/eachref}}
