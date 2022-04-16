@@ -8,9 +8,11 @@
   <p>Drop equipment here.</p>
 
   {{#array 'myequipment' 'equipment'}}
-    <button data-action='remove' data-type='equipment'>-</button>
-    <input name="name" style='width: 200px'>{{name}}</input>
-    <span style='display: inline-block; width: 100px'>{{weight}}</span>
+    <div>
+      <button data-action='remove' data-type='equipment'>-</button>
+      <input name="name" style='width: 200px'>{{name}}</input>
+      <span style='display: inline-block; width: 100px'>{{weight}}</span>
+    </div>
   {{/array}}
   <!-- <button type="equipment" name="add">add equipment</button> -->
 
