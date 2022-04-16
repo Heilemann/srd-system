@@ -7,13 +7,11 @@
 <div id='backpack' droppable='equipment' style='background-color: rgba(255,255,0,1); height: 200px; padding: 10px'>
   <p>Drop equipment here.</p>
 
-  {{#eachref equipment}}
-    <div>
-      <button data-action='remove' data-index='{{index}}' data-type='equipment'>-</button>
-      <span style='display: inline-block; width: 200px'>{{name}}</span>
-      <span style='display: inline-block; width: 100px'>{{weight}}</span>
-    </div>
-  {{/eachref}}
+  {{#array 'myequipment' 'equipment'}}
+    <button data-action='remove' data-type='equipment'>-</button>
+    <input placeholder style='width: 200px'>{{name}}</input>
+    <span style='display: inline-block; width: 100px'>{{weight}}</span>
+  {{/array}}
   <!-- <button type="equipment" name="add">add equipment</button> -->
 
 </div>
