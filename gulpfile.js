@@ -7,8 +7,6 @@ const terser = require('gulp-terser')
 const imagemin = require('gulp-imagemin')
 const imagewebp = require('gulp-webp')
 
-// functions
-
 function compilecss() {
   return src('src/scss/*.scss')
     .pipe(sass())
@@ -18,7 +16,7 @@ function compilecss() {
 }
 
 function jsmin() {
-  return src('src/js/*.js').pipe(terser()).pipe(dest('dest/js'))
+  return src('src/js/*.js').pipe(terser()).pipe(dest('dist/js'))
 }
 
 function optimizeimg() {

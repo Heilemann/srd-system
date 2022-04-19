@@ -1,0 +1,14 @@
+<script>
+  function drag(e) { const { type, id } = e.target.dataset
+  e.dataTransfer.setData(type, id) }
+</script>
+
+<p>
+  <label for='name'>Name:</label>
+  <input name='name' />
+</p>
+
+<p>
+  <label for='weight'>Weight:</label>
+  <input name='weight' />
+</p>
