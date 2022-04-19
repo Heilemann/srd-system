@@ -17,6 +17,13 @@
       "pluralName": "Equipment",
       "description": "A piece of equipment.",
       "file": "src/hbs/equipment.hbs"
+    },
+    {
+      "type": "spells",
+      "singularName": "Spell",
+      "pluralName": "Spells",
+      "description": "A magic effect.",
+      "file": "src/hbs/spell.hbs"
     }
   ],
   "grid": {
