@@ -1,8 +1,8 @@
 {
-  "name": "Dungeons & Dragons 5th Edition SRD",
+  "name": "Old School Essentials",
   "version": "0.0.1",
   "author": "Michael Heilemann",
-  "description": "The default implementation of the Dungeons and Dragons 5th Edition System Reference Document. <a href='https://dnd.wizards.com/products/tabletop-games/rpg-products/5e-srd'>Read more</a>.",
+  "description": "System support for Old School Essentials (and other similar games, like B/X).",
   "templates": [
     {
       "type": "character",
