@@ -22,20 +22,22 @@
 
   .block label {
     background: black;
-    width: 150px;
-    flex: 1;
+    color: white;
+    width: 40px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: -1px;
     font-size: 13px;
-    padding: 5px 10px
+    padding: 5px 10px;
+    text-align: center;
   }
 
   .block input {
     background: white;
     flex: auto;
     border: 1px solid black;
-    padding: 5px
+    padding: 5px;
+    width: 60%;
   }
 
   .vstack {
@@ -50,11 +52,6 @@
     flex-direction: row;
     flex: 1;
     gap: 10px
-  }
-
-  .block label {
-    color: white;
-    width: 20vw;
   }
 
   @media screen and (max-width: 400px) {
@@ -122,7 +119,7 @@
 <h3>Equipment</h3>
 
 <!-- {{#array 'myequipment' 'equipment'}} -->
-<div arrayname="equipment" accepts="equipment">
+<div arrayname="myequipment" accepts="equipment">
   <div>
     <button name='remove'>-</button>
     <input type="hidden" name="documentId" />
@@ -136,7 +133,7 @@
 <h3>Spells</h3>
 
 <!-- {{#array 'myspells' 'spells'}} -->
-<div arrayname="equipment" accepts="equipment">
+<div arrayname="myspells" accepts="spells">
   <div>
     <button name='remove'>-</button>
     <input type="hidden" name="documentId" />
