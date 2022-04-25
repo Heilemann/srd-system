@@ -1,5 +1,3 @@
-# System Reference Implementation of the 5E SRD
+# System Reference Implementation
 
 TKTK.
-
-## Development Tips & Tricks
