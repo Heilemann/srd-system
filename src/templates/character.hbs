@@ -4,92 +4,144 @@
       color: white
     }
 
-    input, button {
+    input,
+    button {
       background-color: #333;
       color: white;
     }
   }
 
-  .block-horizontal {
+  h1 {
+    margin: 0;
+  }
+
+  .block {
     display: flex;
+    line-height: 20px
   }
 
-  .block-horizontal label {
+  .block label {
     background: black;
+    width: 150px;
+    flex: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: -1px;
+    font-size: 13px;
+    padding: 5px 10px
   }
 
-  @media screen and (max-width: 600px) {
-    .block-horizontal {
+  .block input {
+    background: white;
+    flex: auto;
+    border: 1px solid black;
+    padding: 5px
+  }
+
+  .vstack {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 5px
+  }
+
+  .hstack {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 10px
+  }
+
+  .block label {
+    color: white;
+    width: 20vw;
+  }
+
+  @media screen and (max-width: 400px) {
+    .hstack {
       flex-direction: column;
     }
+  }
+
+  body {
+    padding: 20px;
   }
 </style>
 
 <div class="vitals">
-  <div>
-    <div class="logo">
-      <h1>Logo Here</h1>
+  <div class="hstack">
+
+    <div class="vstack" style="flex: 0.6">
+      <div class="logo">
+        <h1>OSE</h1>
+      </div>
+
+      <div class="block">
+        <label>AL</label>
+        <input placeholder='Alignment...' name='alignment' />
+      </div>
     </div>
 
-    <div class="block-horizontal">
-      <label>AL</label>
-      <input placeholder='Alignment...' name='alignment' />
+    <div class="vstack">
+      <div class="block">
+        <label>PC</label>
+        <input placeholder='Name...' name='name' />
+      </div>
+
+      <div class="hstack" style="flex: 1 auto;">
+        <div class="block">
+          <label>Class</label>
+          <input placeholder='Class...' name='Class' />
+        </div>
+
+        <div class="block" style="width: 35%">
+          <label>Level</label>
+          <input placeholder='Level...' name='level' />
+        </div>
+      </div>
+
+      <div class="hstack" style="flex: 1 auto;">
+        <div class="block">
+          <label>Title</label>
+          <input placeholder='Title...' name='title' />
+        </div>
+
+        <div class="block" style="width: 35%">
+          <label>HD</label>
+          <input placeholder='Hit Die...' name='hitdie' />
+        </div>
+      </div>
     </div>
+
   </div>
-
-    <div class="block-horizontal">
-    <label>PC</label>
-    <input placeholder='Name...' name='name' />
-  </div>
-
-    <div class="block-horizontal">
-    <div>
-      <label>Class</label>
-      <input placeholder='Class...' name='Class' />
-    </div>
-
-    <div class="block-horizontal">
-      <label>Level</label>
-      <input placeholder='Level...' name='level' />
-    </div>
-  </div>
-
-    <div class="block-horizontal">
-    <div>
-      <label>Title</label>
-      <input placeholder='Title...' name='title' />
-    </div>
-
-    <div class="block-horizontal">
-      <label>Level</label>
-      <input placeholder='Hit Die...' name='hitdie' />
-    </div>
-  </div>
-</div>
+</div> <!-- end vitals -->
 
 <!-- <div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
   style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div> -->
 
 <h3>Equipment</h3>
 
-{{#array 'myequipment' 'equipment'}}
+<!-- {{#array 'myequipment' 'equipment'}} -->
+<div arrayname="equipment" accepts="equipment">
   <div>
     <button name='remove'>-</button>
     <input type="hidden" name="documentId" />
     <input name="name" style='width: 200px'>{{name}}</input>
     <span style='display: inline-block; width: 100px'>{{weight}}</span>
   </div>
-{{/array}}
+</div>
+<!-- {{/array}} -->
 <!-- <button type="equipment" name="add">add equipment</button> -->
 
 <h3>Spells</h3>
 
-{{#array 'myspells' 'spells'}}
+<!-- {{#array 'myspells' 'spells'}} -->
+<div arrayname="equipment" accepts="equipment">
   <div>
     <button name='remove'>-</button>
     <input type="hidden" name="documentId" />
     <input name="name" style='width: 200px'>{{name}}</input>
     <span style='display: inline-block; width: 100px'>{{weight}}</span>
   </div>
-{{/array}}
-
+</div>
+<!-- {{/array}} -->
