@@ -11,19 +11,46 @@
     }
   }
 
+  body {
+    padding: 20px;
+  }
+
+
   h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 20px;
+    padding: 1px;
     margin: 0;
+    text-align: center;
   }
 
-  .block {
-    display: flex;
-    line-height: 20px
-  }
-
-  .block label {
+  .subhead {
+    font-size: 11px;
     background: black;
     color: white;
-    width: 40px;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .hblock {
+    display: flex;
+    line-height: 20px;
+  }
+
+  .vblock {
+    display: flex;
+    line-height: 20px;
+    flex-direction: column;
+  }
+
+  .hblock>label,
+  .vblock>label {
+    background: black;
+    color: white;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: -1px;
@@ -32,114 +59,339 @@
     text-align: center;
   }
 
-  .block input {
+  .hblock>label {
+    width: 80px;
+  }
+
+  .hblock input,
+  .vblock input {
     background: white;
     flex: auto;
     border: 1px solid black;
     padding: 5px;
+    padding-right: 0;
+    margin: 0;
+  }
+
+
+  .hblock input {
     width: 60%;
   }
 
-  .vstack {
+  h2 {
+    padding-left: 25px;
+    position: relative;
+    font-size: 16px;
+    line-height: 30px;
+    overflow: hidden;
+    text-transform: uppercase;
+    margin-top: 15px;
+  }
+
+  h2:before {
+    content: " ";
+    background: black;
+    position: absolute;
+    height: 30px;
+    width: 20px;
+    left: 0px;
+  }
+
+  h2:after {
+    content: " ";
+    background: black;
+    position: absolute;
+    height: 30px;
+    width: 1000px;
+    margin-left: 5px;
+  }
+
+  .stack {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 5px
+    gap: 5px;
   }
 
-  .hstack {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    gap: 10px
+  .grid {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    align-items: center;
   }
 
-  @media screen and (max-width: 400px) {
-    .hstack {
-      flex-direction: column;
+  .vitals {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto repeat(4, 1fr);
+  }
+
+  .logo {
+    grid-area: 1 / 1 / 2 / 6;
+  }
+
+  .pcname {
+    grid-area: 2 / 1 / 3 / 6;
+  }
+
+  .alignment {
+    grid-area: 3 / 1 / 4 / 6;
+  }
+
+  .class {
+    grid-area: 4 / 1 / 5 / 4;
+  }
+
+  .level {
+    grid-area: 4 / 4 / 5 / 6;
+  }
+
+  .title {
+    grid-area: 5 / 1 / 6 / 4;
+  }
+
+  .hitdie {
+    grid-area: 5 / 4 / 6 / 6;
+  }
+
+  @media screen and (min-width: 400px) {
+    .vitals {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .logo {
+      grid-area: 1 / 1 / 3 / 3;
+    }
+
+    .pcname {
+      grid-area: 1 / 3 / 2 / 6;
+    }
+
+    .class {
+      grid-area: 2 / 3 / 3 / 5;
+    }
+
+    .level {
+      grid-area: 2 / 5 / 3 / 6;
+    }
+
+    .title {
+      grid-area: 3 / 3 / 4 / 5;
+    }
+
+    .hitdie {
+      grid-area: 3 / 5 / 4 / 6;
+    }
+
+    .alignment {
+      grid-area: 3 / 1 / 4 / 3;
     }
   }
 
-  body {
-    padding: 20px;
+  .combat {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    align-items: start;
+  }
+
+  .header {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .left {
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+  }
+
+  .center {
+    grid-area: 3 / 1 / 4 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .right {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+
+
+  @media screen and (min-width: 400px) {
+    .combat {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      align-items: start;
+    }
+
+    .header {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .left {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .center {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .right {
+      grid-area: 2 / 3 / 3 / 4;
+    }
+  }
+
+  .movement {
+    display: flex;
+    gap: 5px;
+  }
+
+  .movement input {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .movement label {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .inlineblock {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  @media screen and (min-width: 400px) {
+    .abilitiesetc {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+    }
   }
 </style>
 
-<div class="vitals">
-  <div class="hstack">
+<div class="stack">
+  <div class="grid vitals">
+    <div class="logo">
+      <h1>Old-School Essentials</h1>
+      <div class="subhead">Retro Adventure Game</div>
+    </div>
+    <div class="pcname hblock">
+      <label>PC</label>
+      <input placeholder='Name...' name='name' />
+    </div>
+    <div class="alignment hblock">
+      <label>AL</label>
+      <input placeholder='Alignment...' name='alignment' />
+    </div>
+    <div class="class hblock">
+      <label>Class</label>
+      <input placeholder='Class...' name='Class' />
+    </div>
+    <div class="level hblock">
+      <label>LVL</label>
+      <input placeholder='Level...' name='level' />
+    </div>
+    <div class="title hblock">
+      <label>Title</label>
+      <input placeholder='Title...' name='title' />
+    </div>
+    <div class="hitdie hblock">
+      <label>HD</label>
+      <input placeholder='Hit Die...' name='hitdie' />
+    </div>
+  </div>
 
-    <div class="vstack" style="flex: 0.6">
-      <div class="logo">
-        <h1>Old-School Essentials</h1>
-        <div class="subhead">Retro Adventure Game</div>
+  <div class="grid combat">
+    <div class="header">
+      <h2>Combat</h2>
+    </div>
+    <div class="left">
+      <div class="vblock">
+        <label>HP</label>
+        <input name="hitpoints" placeholder="Hitpoints..." />
       </div>
-
-      <div class="block">
-        <label>AL</label>
-        <input placeholder='Alignment...' name='alignment' />
+      <div class="vblock">
+        <label>Max</label>
+        <input name="maxhitpoints" placeholder="Max HP..." />
       </div>
     </div>
-
-    <div class="vstack">
-      <div class="block">
-        <label>PC</label>
-        <input placeholder='Name...' name='name' />
+    <div class="center">
+      <div class="hblock">
+        <label>Init</label>
+        <input name="initiative" placeholder="Initiative..." />
       </div>
-
-      <div class="hstack" style="flex: 1 auto;">
-        <div class="block">
-          <label>Class</label>
-          <input placeholder='Class...' name='Class' />
-        </div>
-
-        <div class="block" style="width: 35%">
-          <label>LVL</label>
-          <input placeholder='Level...' name='level' />
-        </div>
-      </div>
-
-      <div class="hstack" style="flex: 1 auto;">
-        <div class="block">
-          <label>Title</label>
-          <input placeholder='Title...' name='title' />
-        </div>
-
-        <div class="block" style="width: 35%">
-          <label>HD</label>
-          <input placeholder='Hit Die...' name='hitdie' />
+      <div class="vblock">
+        <label>Movement</label>
+        <div class="movement">
+          <div class="inlineblock">
+            <label for="movementen">Encounter</label>
+            <input name="movementen" placeholder="0" />
+          </div>
+          <div class="inlineblock">
+            <label for="movementex">Exploration</label>
+            <input name="movementex" placeholder="0" />
+          </div>
+          <div class="inlineblock">
+            <label for="movementov">Overland</label>
+            <input name="movementov" placeholder="0" />
+          </div>
         </div>
       </div>
     </div>
+    <div class="rught">
+      <div class="vblock">
+        <label>AC</label>
+        <input name="ac" placeholder="AC..." />
+      </div>
+      <div class="vblock">
+        <label>Unarmored</label>
+        <input name="unarmoredac" placeholder="Unarmored AC..." />
+      </div>
 
+    </div>
   </div>
-</div> <!-- end vitals -->
 
-<!-- <div id='iframe-character-fake-id' draggable='true' ondragstart='dragStartHandler(event)'
-  style='background: rgba(0,255,0,1); height: 50px' ondragstart='drag(event)'>Draggable iFrame Character</div> -->
+  <div class="grid abilitiesetc">
+    <div class="abilities">
+      <div class="header">
+        <h2>Abilities</h2>
+      </div>
+      <div arrayname="abilities" accepts="abilities">
+        <div>
+          <button name='remove'>-</button>
+          <input type="hidden" name="documentId" />
+          <input name="name" style="width: 200px" value="{{name}}">
+        </div>
+      </div>
 
-<h3>Equipment</h3>
+    </div>
+    <div class="skills">
+      <div class="header">
+        <h2>Skills</h2>
+      </div>
 
-<!-- {{#array 'myequipment' 'equipment'}} -->
-<div arrayname="myequipment" accepts="equipment">
-  <div>
-    <button name='remove'>-</button>
-    <input type="hidden" name="documentId" />
-    <input name="name" style='width: 200px'>{{name}}</input>
-    <span style='display: inline-block; width: 100px'>{{weight}}</span>
+      <div arrayname="skills" accepts="skills">
+        <div>
+          <button name='remove'>-</button>
+          <input type="hidden" name="documentId" />
+          <input name="name" style="width: 200px" value="{{name}}">
+        </div>
+      </div>
+    </div>
+    <div class="weapons">
+      <div class="header">
+        <h2>Weapons</h2>
+      </div>
+
+      <div arrayname="weapons" accepts="weapons">
+        <div>
+          <button name='remove'>-</button>
+          <input type="hidden" name="documentId" />
+          <input name="name" style="width: 200px" value="{{name}}">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<!-- {{/array}} -->
-<!-- <button type="equipment" name="add">add equipment</button> -->
-
-<h3>Spells</h3>
-
-<!-- {{#array 'myspells' 'spells'}} -->
-<div arrayname="myspells" accepts="spells">
-  <div>
-    <button name='remove'>-</button>
-    <input type="hidden" name="documentId" />
-    <input name="name" style='width: 200px'>{{name}}</input>
-    <span style='display: inline-block; width: 100px'>{{weight}}</span>
-  </div>
-</div>
-<!-- {{/array}} -->
