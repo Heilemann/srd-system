@@ -1,9 +1,8 @@
 <style>
   @media (prefers-color-scheme: dark) {
     * {
-      color: white
+      color: white;
     }
-
 
     input,
     button {
@@ -15,7 +14,6 @@
   body {
     padding: 20px;
   }
-
 
   h1 {
     font-size: 18px;
@@ -78,38 +76,38 @@
     margin: 0;
   }
 
-
   .hblock input {
     width: 60%;
   }
 
   h2 {
-    padding-left: 25px;
+    /* padding-left: 25px; */
     position: relative;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 16px;
     line-height: 30px;
     overflow: hidden;
     text-transform: uppercase;
     margin-top: 15px;
   }
 
-  h2:before {
-    content: " ";
+  /* h2:before {
+    content: ' ';
     background: black;
     position: absolute;
     height: 30px;
     width: 20px;
     left: 0px;
-  }
+  } */
 
-  h2:after {
-    content: " ";
+  /* h2:after {
+    content: ' ';
     background: black;
     position: absolute;
     height: 30px;
     width: 1000px;
     margin-left: 5px;
-  }
+  } */
 
   .stack {
     display: flex;
@@ -224,6 +222,10 @@
     grid-area: 4 / 1 / 5 / 2;
   }
 
+  .right input {
+    text-align: center;
+    padding-left: 0;
+  }
 
   @media screen and (min-width: 400px) {
     .combat {
@@ -241,7 +243,7 @@
     }
 
     .left input {
-      height: 89px
+      height: 89px;
     }
 
     .center {
@@ -395,21 +397,14 @@
     grid-area: 2 / 2 / 3 / 3;
   }
 
-  @media screen and (min-width: 400px) {
-    .savingthrows {
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: auto repeat(1, 1fr);
-      align-items: start;
-    }
-  }
-
-  .savingthrows input {
-    text-align: center;
-    padding-left: 0;
+  .savingthrows {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto repeat(1, 1fr);
+    align-items: start;
   }
 
   .savingthrows .header {
-    grid-area: 1 / 1 / 2 / 6;
+    grid-area: 1 / 1 / 2 / 4;
   }
 
   .savingthrows .deathpoison {
@@ -425,58 +420,149 @@
   }
 
   .savingthrows .breathattacks {
-    grid-area: 2 / 4 / 3 / 5;
+    grid-area: 3 / 1 / 4 / 2;
   }
 
   .savingthrows .spellsrodsstaves {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+
+  @media screen and (min-width: 400px) {
+    .savingthrows {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .savingthrows .header {
+      grid-area: 1 / 1 / 2 / 6;
+    }
+
+    .savingthrows .deathpoison {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .savingthrows .magicwands {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .savingthrows .paralysispetrification {
+      grid-area: 2 / 3 / 3 / 4;
+    }
+
+    .savingthrows .breathattacks {
+      grid-area: 2 / 4 / 3 / 5;
+    }
+
+    .savingthrows .spellsrodsstaves {
+      grid-area: 2 / 5 / 3 / 6;
+    }
+  }
+
+  .savingthrows input {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .treasure {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto repeat(1, 1fr);
+  }
+
+  .treasure .header {
+    grid-area: 1 / 1 / 2 / 6;
+  }
+
+  .treasure .platinum {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .treasure .gold {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .treasure .electrum {
+    grid-area: 2 / 3 / 3 / 4;
+  }
+
+  .treasure .silver {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+
+  .treasure .copper {
     grid-area: 2 / 5 / 3 / 6;
+  }
+
+  @media screen and (min-width: 400px) {
+    .treasure .vblock {
+      flex-direction: row;
+    }
   }
 </style>
 
+<script>
+  const abilitymodifier = {
+    "3": "-3",
+    "4": "-2",
+    "5": "-2",
+    "6": "-1",
+    "7": "-1",
+    "8": "-1",
+    "9": "0",
+    "10": "0",
+    "11": "0",
+    "12": "0",
+    "13": "+1",
+    "14": "+1",
+    "15": "+1",
+    "16": "+2",
+    "17": "+2",
+    "18": "+3",
+  }
+</script>
+
 <div class="stack">
-  <div class="grid vitals">
+  <div class="vitals grid">
     <div class="logo">
       <h1>Old-School Essentials</h1>
       <div class="subhead">Retro Adventure Game</div>
     </div>
     <div class="pcname hblock">
       <label>PC</label>
-      <input placeholder='Name...' name='name' />
+      <input placeholder="Name..." name="name" />
     </div>
     <div class="alignment hblock">
       <label>AL</label>
-      <input placeholder='Alignment...' name='alignment' />
+      <input placeholder="Alignment..." name="alignment" />
     </div>
     <div class="class hblock">
       <label>Class</label>
-      <input placeholder='Class...' name='Class' />
+      <input placeholder="Class..." name="Class" />
     </div>
     <div class="level hblock">
       <label>LVL</label>
-      <input placeholder='Level...' name='level' />
+      <input placeholder="Level..." name="level" />
     </div>
     <div class="title hblock">
       <label>Title</label>
-      <input placeholder='Title...' name='title' />
+      <input placeholder="Title..." name="title" />
     </div>
     <div class="hitdie hblock">
       <label>HD</label>
-      <input placeholder='Hit Die...' name='hitdie' />
+      <input placeholder="Hit Die..." name="hitdie" />
     </div>
   </div>
 
-  <div class="grid combat">
+  <div class="combat grid">
     <div class="header">
       <h2>Combat</h2>
     </div>
     <div class="left">
       <div class="vblock">
         <label>HP</label>
-        <input name="hitpoints" placeholder="Hitpoints..." />
+        <input name="hitpoints" placeholder="&mdash;" />
       </div>
       <div class="vblock">
         <label>Max</label>
-        <input name="maxhitpoints" placeholder="Max HP..." />
+        <input name="maxhitpoints" placeholder="&mdash;" />
       </div>
     </div>
     <div class="center">
@@ -505,29 +591,27 @@
     <div class="right">
       <div class="vblock">
         <label>AC</label>
-        <input name="ac" placeholder="AC..." />
+        <input name="ac" placeholder="&mdash;" />
       </div>
       <div class="vblock">
         <label>Unarmored</label>
-        <input name="unarmoredac" placeholder="Unarmored AC..." />
+        <input name="unarmoredac" placeholder="&mdash;" />
       </div>
-
     </div>
   </div>
 
-  <div class="grid abilitiesetc">
+  <div class="abilitiesetc grid">
     <div class="abilities">
       <div class="header">
         <h2>Abilities</h2>
       </div>
       <div arrayname="abilities" accepts="abilities">
         <div>
-          <button name='remove'>-</button>
+          <button name="remove">-</button>
           <input type="hidden" name="documentId" />
-          <input name="name" style="width: 200px" value="{{name}}">
+          <input name="name" style="width: 200px" value="{{name}}" />
         </div>
       </div>
-
     </div>
     <div class="skills">
       <div class="header">
@@ -536,9 +620,9 @@
 
       <div arrayname="skills" accepts="skills">
         <div>
-          <button name='remove'>-</button>
+          <button name="remove">-</button>
           <input type="hidden" name="documentId" />
-          <input name="name" style="width: 200px" value="{{name}}">
+          <input name="name" style="width: 200px" value="{{name}}" />
         </div>
       </div>
     </div>
@@ -549,9 +633,9 @@
 
       <div arrayname="weapons" accepts="weapons">
         <div>
-          <button name='remove'>-</button>
+          <button name="remove">-</button>
           <input type="hidden" name="documentId" />
-          <input name="name" style="width: 200px" value="{{name}}">
+          <input name="name" style="width: 200px" value="{{name}}" />
         </div>
       </div>
     </div>
@@ -566,7 +650,8 @@
   <div class="strength vblock">
     <label>STR</label>
     <input class="value" name="strength" placeholder="&mdash;" />
-    <input class="modifier" name="strength-modifier" placeholder="&mdash;" />
+    <input class="modifier" name="strength-modifier" placeholder="&mdash;"
+      defaultValue="{{abilitymodifier[strength]}}" />
   </div>
 
   <div class="intelligence vblock">
@@ -614,7 +699,7 @@
     <input name="magicwands" placeholder="&mdash;" />
   </div>
   <div class="paralysispetrification vblock">
-    <label>Paralysis, Petrification</label>
+    <label>Paralysis, Petrif.</label>
     <input name="paralysispetrification" placeholder="&mdash;" />
   </div>
   <div class="breathattacks vblock">
@@ -626,3 +711,45 @@
     <input name="spellsrodsstaves" placeholder="&mdash;" />
   </div>
 </div>
+
+<div class="treasure grid">
+  <div class="header">
+    <h2>Treasure</h2>
+  </div>
+
+  <div class="platinum vblock">
+    <label>PP</label>
+    <input name="platinum" placeholder="&mdash;" />
+  </div>
+  <div class="gold vblock">
+    <label>GP</label>
+    <input name="gold" placeholder="&mdash;" />
+  </div>
+  <div class="electrum vblock">
+    <label>EP</label>
+    <input name="electrum" placeholder="&mdash;" />
+  </div>
+  <div class="silver vblock">
+    <label>SP</label>
+    <input name="silver" placeholder="&mdash;" />
+  </div>
+  <div class="copper vblock">
+    <label>CP</label>
+    <input name="copper" placeholder="&mdash;" />
+  </div>
+</div>
+
+<div class="equipment">
+  <div class="header">
+    <h2>Equipment</h2>
+  </div>
+  <div arrayname="weapons" accepts="weapons">
+    <div>
+      <button name="remove">-</button>
+      <input type="hidden" name="documentId" />
+      <input name="name" style="width: 200px" value="{{name}}" />
+    </div>
+  </div>
+</div>
+
+<div class="experience grid"></div>
