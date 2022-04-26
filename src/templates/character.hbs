@@ -4,6 +4,7 @@
       color: white
     }
 
+
     input,
     button {
       background-color: #333;
@@ -63,6 +64,10 @@
     width: 80px;
   }
 
+  input {
+    width: 100%;
+  }
+
   .hblock input,
   .vblock input {
     background: white;
@@ -81,7 +86,7 @@
   h2 {
     padding-left: 25px;
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 30px;
     overflow: hidden;
     text-transform: uppercase;
@@ -202,6 +207,12 @@
     display: flex;
   }
 
+  .left input {
+    height: 69px;
+    text-align: center;
+    padding-left: 0;
+  }
+
   .center {
     grid-area: 3 / 1 / 4 / 2;
     display: flex;
@@ -229,6 +240,10 @@
       grid-area: 2 / 1 / 3 / 2;
     }
 
+    .left input {
+      height: 89px
+    }
+
     .center {
       grid-area: 2 / 2 / 3 / 3;
     }
@@ -240,15 +255,24 @@
 
   .movement {
     display: flex;
-    gap: 5px;
+    /* gap: 5px; */
   }
 
   .movement input {
     width: 100%;
   }
 
-  input {
-    width: 100%;
+  .movement .inlineblock {
+    border: 1px solid black;
+    border-right: none;
+  }
+
+  .movement .inlineblock:last-child {
+    border-right: 1px solid black;
+  }
+
+  .movement .inlineblock input {
+    border: none;
   }
 
   .movement label {
@@ -256,6 +280,11 @@
     text-align: center;
     font-size: 10px;
     font-weight: bold;
+  }
+
+  .movement input {
+    text-align: center;
+    padding-left: 0;
   }
 
   .inlineblock {
@@ -268,6 +297,139 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto;
     }
+  }
+
+  .attributes {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto repeat(2, 1fr);
+  }
+
+  .attributes .header {
+    grid-area: 1 / 1 / 2 / 4;
+  }
+
+  .attributes .strength {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .attributes .intelligence {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .attributes .wisdom {
+    grid-area: 2 / 3 / 3 / 4;
+  }
+
+  .attributes .dexterity {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  .attributes .constitution {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+
+  .attributes .charisma {
+    grid-area: 3 / 3 / 4 / 4;
+  }
+
+  @media screen and (min-width: 400px) {
+    .attributes {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: auto repeat(1, 1fr);
+    }
+
+    .attributes .header {
+      grid-area: 1 / 1 / 2 / 7;
+    }
+
+    .attributes .strength {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .attributes .intelligence {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .attributes .wisdom {
+      grid-area: 2 / 3 / 3 / 4;
+    }
+
+    .attributes .dexterity {
+      grid-area: 2 / 4 / 3 / 5;
+    }
+
+    .attributes .constitution {
+      grid-area: 2 / 5 / 3 / 6;
+    }
+
+    .attributes .charisma {
+      grid-area: 2 / 6 / 3 / 7;
+    }
+  }
+
+  .attributes .vblock {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border: 1px solid black;
+    border-top: 0;
+  }
+
+  .attributes input {
+    text-align: center;
+    border: none;
+    padding-left: 0;
+  }
+
+  .attributes .vblock label {
+    grid-area: 1 / 1 / 2 / 3;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .attributes .vblock input.value {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .attributes .vblock input.modifier {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  @media screen and (min-width: 400px) {
+    .savingthrows {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: auto repeat(1, 1fr);
+      align-items: start;
+    }
+  }
+
+  .savingthrows input {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .savingthrows .header {
+    grid-area: 1 / 1 / 2 / 6;
+  }
+
+  .savingthrows .deathpoison {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .savingthrows .magicwands {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .savingthrows .paralysispetrification {
+    grid-area: 2 / 3 / 3 / 4;
+  }
+
+  .savingthrows .breathattacks {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+
+  .savingthrows .spellsrodsstaves {
+    grid-area: 2 / 5 / 3 / 6;
   }
 </style>
 
@@ -326,21 +488,21 @@
         <label>Movement</label>
         <div class="movement">
           <div class="inlineblock">
-            <label for="movementen">Encounter</label>
-            <input name="movementen" placeholder="0" />
+            <label for="move-encounter">En</label>
+            <input name="move-encounter" placeholder="&mdash;" />
           </div>
           <div class="inlineblock">
-            <label for="movementex">Exploration</label>
-            <input name="movementex" placeholder="0" />
+            <label for="move-exploration">Ex</label>
+            <input name="move-exploration" placeholder="&mdash;" />
           </div>
           <div class="inlineblock">
-            <label for="movementov">Overland</label>
-            <input name="movementov" placeholder="0" />
+            <label for="move-overland">Ov</label>
+            <input name="move-overland" placeholder="&mdash;" />
           </div>
         </div>
       </div>
     </div>
-    <div class="rught">
+    <div class="right">
       <div class="vblock">
         <label>AC</label>
         <input name="ac" placeholder="AC..." />
@@ -393,5 +555,74 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="attributes grid">
+  <div class="header">
+    <h2>Ability Scores</h2>
+  </div>
+
+  <div class="strength vblock">
+    <label>STR</label>
+    <input class="value" name="strength" placeholder="&mdash;" />
+    <input class="modifier" name="strength-modifier" placeholder="&mdash;" />
+  </div>
+
+  <div class="intelligence vblock">
+    <label>INT</label>
+    <input class="value" name="intelligence" placeholder="&mdash;" />
+    <input class="modifier" name="intelligence-modifier" placeholder="&mdash;" />
+  </div>
+
+  <div class="wisdom vblock">
+    <label>WIS</label>
+    <input class="value" name="wisdom" placeholder="&mdash;" />
+    <input class="modifier" name="wisdom-modifier" placeholder="&mdash;" />
+  </div>
+
+  <div class="dexterity vblock">
+    <label>DEX</label>
+    <input class="value" name="dexterity" placeholder="&mdash;" />
+    <input class="modifier" name="dexterity-modifier" placeholder="&mdash;" />
+  </div>
+
+  <div class="constitution vblock">
+    <label>CON</label>
+    <input class="value" name="constitution" placeholder="&mdash;" />
+    <input class="modifier" name="constitution-modifier" placeholder="&mdash;" />
+  </div>
+
+  <div class="charisma vblock">
+    <label>CHA</label>
+    <input class="value" name="charisma" placeholder="&mdash;" />
+    <input class="modifier" name="charisma-modifier" placeholder="&mdash;" />
+  </div>
+</div>
+
+<div class="savingthrows grid">
+  <div class="header">
+    <h2>Saving Throws</h2>
+  </div>
+
+  <div class="deathpoison vblock">
+    <label>Death, Poison</label>
+    <input name="deathpoison" placeholder="&mdash;" />
+  </div>
+  <div class="magicwands vblock">
+    <label>Magic Wands</label>
+    <input name="magicwands" placeholder="&mdash;" />
+  </div>
+  <div class="paralysispetrification vblock">
+    <label>Paralysis, Petrification</label>
+    <input name="paralysispetrification" placeholder="&mdash;" />
+  </div>
+  <div class="breathattacks vblock">
+    <label>Breath Attacks</label>
+    <input name="breathattacks" placeholder="&mdash;" />
+  </div>
+  <div class="spellsrodsstaves vblock">
+    <label>Spells, Rods, Staves</label>
+    <input name="spellsrodsstaves" placeholder="&mdash;" />
   </div>
 </div>
