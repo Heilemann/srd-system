@@ -6,4 +6,4 @@ var hooks = {
   },
 }
 
-return hooks[hook](data)
+return hooks // eslint-disable-line
