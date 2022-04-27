@@ -1,4 +1,4 @@
-const hooks = {
+var hooks = {
   test: string => {
     alert(string)
   },
