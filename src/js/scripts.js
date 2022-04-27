@@ -19,12 +19,12 @@ const abilitymodifier = {
 
 const hooks = {
   updateValues: values => {
-    values['strength-modifier'] = JSON.stringify(
+    values['strengthModifier'] = JSON.stringify(
       abilitymodifier[values['strength']],
     )
     console.log(
       'updateValues',
-      values['strength-modifier'],
+      values['strengthModifier'],
       '<--',
       values['strength'],
     )
