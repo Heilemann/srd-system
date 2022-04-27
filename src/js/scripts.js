@@ -5,3 +5,5 @@ var hooks = {
     alert(string)
   },
 }
+
+hooks[hook](data)
