@@ -17,26 +17,29 @@ const abilitymodifier = {
   18: '+3',
 }
 
-const attributes = [
-  'strength',
-  'dexterity',
-  'constitution',
-  'intelligence',
-  'wisdom',
-  'charisma',
-]
+const calculateAttributeModifier = value => {
+  const attributeValue = parseInt(value, 10)
 
-const calculateAttributeModifier = attribute => {
-  const attributeValue = parseInt(attribute.value, 10)
-  const attributeModifier = Math.floor((attributeValue - 10) / 2)
-  console.log(attribute, attributeModifier)
-  // return attributeModifier
+  if (attributeValue < 3) return '-3'
+  if (attributeValue > 18) return '+3'
+  if (typeof attributeValue === 'number') return abilitymodifier[attributeValue]
+  return ''
 }
 
 const hooks = {
   updateValues: values => {
+    const attributes = [
+      'strength',
+      'dexterity',
+      'constitution',
+      'intelligence',
+      'wisdom',
+      'charisma',
+    ]
+
     attributes.forEach(attribute => {
       const attributeModifier = calculateAttributeModifier(values[attribute])
+      console.log(values[attribute], attributeModifier)
       // values[attribute].modifier = abilitymodifier[attributeModifier]
     })
     values['strengthModifier'] = abilitymodifier[values['strength']]
@@ -44,4 +47,4 @@ const hooks = {
   },
 }
 
-return hooks // eslint-disable-line
+return hooks
