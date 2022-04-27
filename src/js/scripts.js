@@ -1,6 +1,4 @@
-console.log('> scripts ran')
-
-var hooks = {
+const hooks = {
   test: string => {
     alert(string)
   },
