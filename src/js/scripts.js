@@ -3,3 +3,4 @@ var hooks = {
     alert(string)
   },
 }
+hooks
