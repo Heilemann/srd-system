@@ -17,13 +17,30 @@ const abilitymodifier = {
   18: '+3',
 }
 
+const attributes = [
+  'strength',
+  'dexterity',
+  'constitution',
+  'intelligence',
+  'wisdom',
+  'charisma',
+]
+
+const calculateAttributeModifier = attribute => {
+  const attributeValue = parseInt(attribute.value, 10)
+  const attributeModifier = Math.floor((attributeValue - 10) / 2)
+  console.log(attribute, attributeModifier)
+  // return attributeModifier
+}
+
 const hooks = {
   updateValues: values => {
+    attributes.forEach(attribute => {
+      const attributeModifier = calculateAttributeModifier(values[attribute])
+      // values[attribute].modifier = abilitymodifier[attributeModifier]
+    })
     values['strengthModifier'] = abilitymodifier[values['strength']]
     return values
-  },
-  test: string => {
-    alert(string)
   },
 }
 
