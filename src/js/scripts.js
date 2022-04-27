@@ -6,4 +6,4 @@ var hooks = {
   },
 }
 
-hooks[hook](data)
+return hooks[hook](data)
