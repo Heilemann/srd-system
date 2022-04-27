@@ -19,7 +19,7 @@ const abilitymodifier = {
 
 const hooks = {
   updateValues: values => {
-    values['strength-modifier'] = abilitymodifier[values['strength']]
+    values['strength-modifier'] = abilitymodifier[values['strength']].toString()
     console.log(
       'updateValues',
       values['strength-modifier'],
