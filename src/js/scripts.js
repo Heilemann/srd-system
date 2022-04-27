@@ -1,4 +1,4 @@
-console.log('test')
+console.log('> scripts ran')
 
 var hooks = {
   test: string => {
