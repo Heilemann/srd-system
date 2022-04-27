@@ -20,7 +20,12 @@ const abilitymodifier = {
 const hooks = {
   updateValues: values => {
     values['strength-modifier'] = abilitymodifier[values['strength']]
-    console.log('updateValues', values, values['strength-modifier'])
+    console.log(
+      'updateValues',
+      values['strength-modifier'],
+      '<--',
+      values['strength'],
+    )
     return values
   },
   test: string => {
