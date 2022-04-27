@@ -19,7 +19,9 @@ const abilitymodifier = {
 
 const hooks = {
   updateValues: values => {
-    values['strength-modifier'] = abilitymodifier[values['strength']].toString()
+    values['strength-modifier'] = JSON.stringify(
+      abilitymodifier[values['strength']],
+    )
     console.log(
       'updateValues',
       values['strength-modifier'],
