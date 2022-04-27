@@ -39,7 +39,7 @@ const hooks = {
 
     attributes.forEach(attribute => {
       const attributeModifier = calculateAttributeModifier(values[attribute])
-      values[attribute + 'Modifier'] = abilitymodifier[attributeModifier]
+      values[attribute + 'Modifier'] = attributeModifier
     })
 
     return values
