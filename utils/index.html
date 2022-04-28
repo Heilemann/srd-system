@@ -36,7 +36,11 @@
           const el = document.createElement('button')
           const label = document.createTextNode(template.singularName)
           el.appendChild(label)
-          el.addEventListener('click', () => {
+          el.addEventListener('click', (e) => {
+            document.querySelectorAll('#templates button').forEach(button => {
+              button.classList.remove('active')
+            })
+            e.target.classList.add('active')
             sendMessage({
               type: 'loadTemplate',
               data: template.type
@@ -55,21 +59,26 @@
       height: 100vh;
     }
 
-    #templates {
+    #templates,
+    #hooks {
       display: flex;
       flex-direction: column;
       width: 120px;
     }
 
+    #hooks>*,
     #templates>* {
-      flex: 1 0 auto;
+      flex: 0 0 auto;
+    }
+
+    #templates button.active {
+      outline: 2px solid red;
     }
 
     #previewContainer {
       width: 100%;
       height: 100%;
       border: none;
-      z-index: -1;
       display: flex;
     }
 
@@ -83,7 +92,13 @@
   </style>
 
   <div id="container">
-    <div id="templates"></div>
+    <div id="templates">
+      <div id="hooks">
+        <p>Hooks:</p>
+        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">updateValues</button>
+      </div>
+      <p>Templates:</p>
+    </div>
     <div id="previewContainer">
       <iframe src="iframe.html" id="previewSmall"></iframe>
       <iframe src="iframe.html" id="previewLarge"></iframe>

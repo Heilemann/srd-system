@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="reset.css">
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <title>Preview</title>
+  <!-- <meta http-equiv="refresh" content="2"> -->
 </head>
 
 <body>
@@ -15,6 +16,7 @@
 
   <script>
     let templates = {}
+    let hooks = {}
 
     const messageParent = (message) => {
       const parent = window.top
@@ -32,9 +34,15 @@
 
     const loadTemplate = (template) => {
       console.log('loading template', templates, template)
+      localStorage.setItem('template', template)
       document.getElementById('templateContainer').innerHTML = templates[template](
         // data[template]
       )
+
+      // onchange every input -> 
+      // messageParent ->
+      // updateValues hook to iframe ->
+      // re-render template w. new data
     }
 
     const evaluateScripts = (scripts) => {
@@ -45,19 +53,21 @@
     fetch('./js/templates.js')
       .then(response => response.text())
       .then(loadedTemplates => {
-        const fScripts = new Function(loadedTemplates) // eslint-disable-line no-new-func
         templates = evaluateScripts(loadedTemplates)
 
-        fetch('values.json')
-          .then(response => response.json())
-          .then(values => {
-            console.log('values', values.character)
-            loadTemplate('character', values['character'])
+        fetch('./js/scripts.js')
+          .then(response => response.text())
+          .then(scripts => {
+            hooks = evaluateScripts(scripts)
+            console.log('hooks', hooks)
 
-            // messageParent({
-            //   type: 'loadTemplate',
-            //   values: values
-            // })
+            fetch('values.json')
+              .then(response => response.json())
+              .then(values => {
+                const t = localStorage.getItem('template') || templates[0].type
+                console.log('values', values.character)
+                loadTemplate('character', values['character'])
+              })
           })
       })
 
