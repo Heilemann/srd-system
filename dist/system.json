@@ -11,7 +11,7 @@
       "pluralName": "Characters",
       "description": "A player character.",
       "file": "src/templates/character.hbs",
-      "windowSize": "lg"
+      "windowSize": "large"
     },
     {
       "type": "equipment",
@@ -19,7 +19,7 @@
       "pluralName": "Equipment",
       "description": "A piece of equipment.",
       "file": "src/templates/equipment.hbs",
-      "windowSize": "sm"
+      "windowSize": "small"
     },
     {
       "type": "spells",
@@ -27,7 +27,7 @@
       "pluralName": "Spells",
       "description": "A magic effect.",
       "file": "src/templates/spell.hbs",
-      "windowSize": "md"
+      "windowSize": "medium"
     },
     {
       "type": "weapons",
@@ -35,7 +35,7 @@
       "pluralName": "Weapons",
       "description": "Things that poke, slash and bonk.",
       "file": "src/templates/weapon.hbs",
-      "windowSize": "sm"
+      "windowSize": "small"
     }
   ],
   "grid": {
