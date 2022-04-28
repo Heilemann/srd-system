@@ -13,6 +13,7 @@ const wrap = require('gulp-wrap')
 const declare = require('gulp-declare')
 const concat = require('gulp-concat')
 const merge = require('merge-stream')
+const yaml = require('gulp-yaml')
 
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 console.log(systemConfig.scripts)
@@ -115,6 +116,12 @@ const copyConfig = () => {
 //   )
 // }
 
+const compileYAML = () => {
+  return src('src/values.yml')
+    .pipe(yaml({ space: 2 }))
+    .pipe(dest('dist/'))
+}
+
 // watchtask
 
 function watchTask() {
@@ -125,6 +132,7 @@ function watchTask() {
   watch('src/templates/**/*.hbs', collateHandlebars)
   watch('utils/*.html', copyUtils)
   watch('system.json', copyConfig)
+  watch('src/values.yml', compileYAML)
 }
 
 // default gulp
@@ -137,6 +145,7 @@ exports.default = series(
     optimizeimg,
     webpImage,
     collateHandlebars,
+    compileYAML,
   ),
   watchTask,
 )

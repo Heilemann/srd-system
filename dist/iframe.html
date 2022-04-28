@@ -34,12 +34,18 @@
       .then(data => {
         const fScripts = new Function(data) // eslint-disable-line no-new-func
         const templates = evaluateScripts(data)
-        document.querySelector('#app').innerHTML = templates.character()
 
-        messageParent({
-          type: 'loadTemplate',
-          data: data
-        })
+        fetch('values.json')
+          .then(response => response.json())
+          .then(data => {
+            console.log('data', data.character)
+            document.querySelector('#app').innerHTML = templates.character(data.character)
+
+            messageParent({
+              type: 'loadTemplate',
+              data: data
+            })
+          })
       })
 
   </script>
