@@ -100,7 +100,9 @@ const copyUtils = () => {
 }
 
 const copyConfig = () => {
-  return src('system.json').pipe(dest('dist/'))
+  return src('system.json')
+    .pipe(jsonModify({ key: 'scripts', value: 'dist/js/scripts.js' }))
+    .pipe(dest('dist/'))
 }
 
 // function version() {
