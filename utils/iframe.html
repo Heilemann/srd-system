@@ -11,9 +11,11 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="templateContainer"></div>
 
   <script>
+    let templates = {}
+
     const messageParent = (message) => {
       const parent = window.top
       parent.postMessage(message, '*')
@@ -21,8 +23,19 @@
 
     window.addEventListener('message', (e) => {
       const message = e.data
-      // console.log('frame heard message', message)
+      console.log('frame heard message', message)
+
+      if (message.type === 'loadTemplate') {
+        loadTemplate(message.data)
+      }
     })
+
+    const loadTemplate = (template) => {
+      console.log('loading template', templates, template)
+      document.getElementById('templateContainer').innerHTML = templates[template](
+        // data[template]
+      )
+    }
 
     const evaluateScripts = (scripts) => {
       const fScripts = new Function(scripts) // eslint-disable-line no-new-func
@@ -31,20 +44,20 @@
 
     fetch('./js/templates.js')
       .then(response => response.text())
-      .then(data => {
-        const fScripts = new Function(data) // eslint-disable-line no-new-func
-        const templates = evaluateScripts(data)
+      .then(loadedTemplates => {
+        const fScripts = new Function(loadedTemplates) // eslint-disable-line no-new-func
+        templates = evaluateScripts(loadedTemplates)
 
         fetch('values.json')
           .then(response => response.json())
-          .then(data => {
-            console.log('data', data.character)
-            document.querySelector('#app').innerHTML = templates.character(data.character)
+          .then(values => {
+            console.log('values', values.character)
+            loadTemplate('character', values['character'])
 
-            messageParent({
-              type: 'loadTemplate',
-              data: data
-            })
+            // messageParent({
+            //   type: 'loadTemplate',
+            //   values: values
+            // })
           })
       })
 
