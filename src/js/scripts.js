@@ -45,5 +45,3 @@ const hooks = {
     return values
   },
 }
-
-return hooks

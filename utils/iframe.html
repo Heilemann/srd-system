@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <title>Preview</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    const messageParent = (message) => {
+      const parent = window.top
+      parent.postMessage(message, '*')
+    }
+
+    window.addEventListener('message', (e) => {
+      const message = e.data
+      // console.log('frame heard message', message)
+    })
+
+    const evaluateScripts = (scripts) => {
+      const fScripts = new Function(scripts) // eslint-disable-line no-new-func
+      return (fScripts)()
+    }
+
+    fetch('./js/templates.js')
+      .then(response => response.text())
+      .then(data => {
+        const fScripts = new Function(data) // eslint-disable-line no-new-func
+        const templates = evaluateScripts(data)
+        document.querySelector('#app').innerHTML = templates.character()
+
+        messageParent({
+          type: 'loadTemplate',
+          data: data
+        })
+      })
+
+  </script>
+</body>
+
+</html>

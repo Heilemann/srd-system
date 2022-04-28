@@ -1,0 +1,45 @@
+{
+  "name": "Old School Essentials",
+  "version": "0.0.1",
+  "author": "Michael Heilemann",
+  "description": "System support for Old School Essentials (and other similar games, like B/X).",
+  "scripts": "src/js/scripts.js",
+  "templates": [
+    {
+      "type": "character",
+      "singularName": "Character",
+      "pluralName": "Characters",
+      "description": "A player character.",
+      "file": "src/templates/character.hbs"
+    },
+    {
+      "type": "equipment",
+      "singularName": "Equipment",
+      "pluralName": "Equipment",
+      "description": "A piece of equipment.",
+      "file": "src/templates/equipment.hbs"
+    },
+    {
+      "type": "spells",
+      "singularName": "Spell",
+      "pluralName": "Spells",
+      "description": "A magic effect.",
+      "file": "src/templates/spell.hbs"
+    },
+    {
+      "type": "weapons",
+      "singularName": "Weapon",
+      "pluralName": "Weapons",
+      "description": "Things that poke, slash and bonk.",
+      "file": "src/templates/weapon.hbs"
+    }
+  ],
+  "grid": {
+    "type": "square",
+    "width": "12",
+    "height": "12",
+    "size": "1",
+    "unit": "m"
+  },
+  "license": "NA"
+}

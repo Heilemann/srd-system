@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+
+  <title>System Previewer</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    const sendMessage = (message) => {
+      const iframe = document.getElementById('preview')
+      const iframeWindow = iframe.contentWindow
+      iframeWindow.postMessage(message, '*')
+    }
+
+    window.addEventListener('message', (e) => {
+      const message = e.data
+      console.log('parent heard message', message)
+    })
+
+    fetch('system.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        // document.querySelector('#app').innerHTML = System.templates.character(data);
+
+        // for each document type,
+        // 
+      })
+
+
+      // document.querySelector('#app').innerHTML = System.templates.character();
+  </script>
+
+  <style>
+    #previewContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: -1;
+      display: flex;
+    }
+
+    #previewSmall {
+      width: 320px;
+    }
+
+    #previewLarge {
+      width: 670px;
+    }
+  </style>
+
+  <div id="previewContainer">
+    <iframe src="iframe.html" id="previewSmall"></iframe>
+    <iframe src="iframe.html" id="previewLarge"></iframe>
+  </div>
+</body>
+
+</html>
