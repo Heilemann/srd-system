@@ -37,7 +37,11 @@ function jsmin() {
   return src(systemConfig.scripts)
     .pipe(concat('scripts.js'))
     .pipe(terser())
-    .pipe(footer('return {hooks: hooks, helpers: helpers}'))
+    .pipe(
+      footer(
+        'return {hooks: hooks || {}, helpers: helpers || {}, partials: partials || {}}',
+      ),
+    )
     .pipe(dest('dist/js'))
 }
 
