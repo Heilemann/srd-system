@@ -11,7 +11,8 @@
       "pluralName": "Characters",
       "description": "A player character.",
       "file": "src/templates/character.hbs",
-      "windowSize": "large"
+      "windowSize": "large",
+      "preview": "src/templates/character-preview.hbs"
     },
     {
       "type": "equipment",

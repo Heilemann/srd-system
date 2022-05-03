@@ -27,15 +27,16 @@ function compilecss() {
 }
 
 const copyJS = () => {
-  return gulp
-    .src('node_modules/handlebars/dist/handlebars.runtime.js')
-    .pipe(dest('dist/js/'))
+  // return gulp
+  //   .src('node_modules/handlebars/dist/handlebars.runtime.js')
+  //   .pipe(dest('dist/js/'))
 }
 
 function jsmin() {
   return src(systemConfig.scripts)
+    .pipe(concat('scripts.js'))
     .pipe(terser())
-    .pipe(footer('return hooks'))
+    .pipe(footer('return {hooks: hooks, helpers: helpers}'))
     .pipe(dest('dist/js'))
 }
 
