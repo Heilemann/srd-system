@@ -2,9 +2,12 @@ const helpers={loud:function(t){return t.toUpperCase()}},abilitymodifier={3:"-3"
       let scripts = {}
       if (typeof hooks !== 'undefined') {
         scripts = { ...scripts, hooks: hooks }
+      }
       if (typeof helpers !== 'undefined') {
         scripts = { ...scripts, helpers: helpers }
+      }
       if (typeof partials !== 'undefined') {
         scripts = { ...scripts, partials: partials }
+      }
       return scripts
     
