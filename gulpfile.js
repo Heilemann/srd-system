@@ -37,9 +37,16 @@ function jsmin() {
     .pipe(concat('scripts.js'))
     .pipe(terser())
     .pipe(
-      footer(
-        'return {hooks: hooks || {}, helpers: helpers || {}, partials: partials || {}}',
-      ),
+      footer(`
+      let scripts = {}
+      if (typeof hooks !== 'undefined') {
+        scripts = { ...scripts, hooks: hooks }
+      if (typeof helpers !== 'undefined') {
+        scripts = { ...scripts, helpers: helpers }
+      if (typeof partials !== 'undefined') {
+        scripts = { ...scripts, partials: partials }
+      return scripts
+    `),
     )
     .pipe(dest('dist/js'))
 }
