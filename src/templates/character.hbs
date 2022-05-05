@@ -519,184 +519,183 @@
   }
 </style>
 
-<div class='stack'>
-  <div class='vitals grid'>
-    <div class='logo'>
-      <h1>Old-School Essentials</h1>
-      <div class='subhead'>Retro Adventure Game</div>
-    </div>
-    <div class='pcname hblock'>
-      <label>PC</label>
-      <input placeholder='Name...' name='name' />
-    </div>
-    <div class='alignment hblock'>
-      <label>AL</label>
-      <input placeholder='Alignment...' name='alignment' />
-    </div>
-    <div class='class hblock'>
-      <label>Class</label>
-      <input placeholder='Class...' name='Class' />
-    </div>
-    <div class='level hblock'>
-      <label>LVL</label>
-      <input placeholder='Level...' name='level' />
-    </div>
-    <div class='title hblock'>
-      <label>Title</label>
-      <input placeholder='Title...' name='title' />
-    </div>
-    <div class='hitdie hblock'>
-      <label>HD</label>
-      <input placeholder='Hit Die...' name='hitdie' />
-    </div>
+
+<div class='vitals grid'>
+  <div class='logo'>
+    <h1>Old-School Essentials</h1>
+    <div class='subhead'>Retro Adventure Game</div>
+  </div>
+  <div class='pcname hblock'>
+    <label>PC</label>
+    <input placeholder='Name...' name='name' />
+  </div>
+  <div class='alignment hblock'>
+    <label>AL</label>
+    <input placeholder='Alignment...' name='alignment' />
+  </div>
+  <div class='class hblock'>
+    <label>Class</label>
+    <input placeholder='Class...' name='Class' />
+  </div>
+  <div class='level hblock'>
+    <label>LVL</label>
+    <input placeholder='Level...' name='level' />
+  </div>
+  <div class='title hblock'>
+    <label>Title</label>
+    <input placeholder='Title...' name='title' />
+  </div>
+  <div class='hitdie hblock'>
+    <label>HD</label>
+    <input placeholder='Hit Die...' name='hitdie' />
+  </div>
+</div>
+
+<div class='attributes grid'>
+  <div class='header'>
+    <h2>Ability Scores</h2>
   </div>
 
-  <div class='attributes grid'>
-    <div class='header'>
-      <h2>Ability Scores</h2>
-    </div>
-
-    <div class='strength vblock'>
-      <label>STR</label>
-      <input class='value' name='strength' placeholder='&mdash;' />
-      <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
-    </div>
-
-    <div class='intelligence vblock'>
-      <label>INT</label>
-      <input class='value' name='intelligence' placeholder='&mdash;' />
-      <input class='modifier' name='intelligenceModifier' placeholder='{{intelligenceModifier}}' />
-    </div>
-
-    <div class='wisdom vblock'>
-      <label>WIS</label>
-      <input class='value' name='wisdom' placeholder='&mdash;' />
-      <input class='modifier' name='wisdomModifier' placeholder='{{wisdomModifier}}' />
-    </div>
-
-    <div class='dexterity vblock'>
-      <label>DEX</label>
-      <input class='value' name='dexterity' placeholder='&mdash;' />
-      <input class='modifier' name='dexterityModifier' placeholder='{{dexterityModifier}}' />
-    </div>
-
-    <div class='constitution vblock'>
-      <label>CON</label>
-      <input class='value' name='constitution' placeholder='&mdash;' />
-      <input class='modifier' name='constitutionModifier' placeholder='{{constitutionModifier}}' />
-    </div>
-
-    <div class='charisma vblock'>
-      <label>CHA</label>
-      <input class='value' name='charisma' placeholder='&mdash;' />
-      <input class='modifier' name='charismaModifier' placeholder='{{charismaModifier}}' />
-    </div>
+  <div class='strength vblock'>
+    <label>STR</label>
+    <input class='value' name='strength' placeholder='&mdash;' />
+    <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
   </div>
 
-  <div>{{asset token}}</div>
+  <div class='intelligence vblock'>
+    <label>INT</label>
+    <input class='value' name='intelligence' placeholder='&mdash;' />
+    <input class='modifier' name='intelligenceModifier' placeholder='{{intelligenceModifier}}' />
+  </div>
 
-  <script>
-    const resetToken = () => {
-      debugger
-      document.querySelector('*[name="token"]').value = ''
-    }
-  </script>
+  <div class='wisdom vblock'>
+    <label>WIS</label>
+    <input class='value' name='wisdom' placeholder='&mdash;' />
+    <input class='modifier' name='wisdomModifier' placeholder='{{wisdomModifier}}' />
+  </div>
 
-  <button data-fileupload="token">{{#if token}}Change Token{{else}}Upload Token{{/if}}</button>
-  <button onclick="resetToken">Remove Token</button>
-  <button onclick="() => {
+  <div class='dexterity vblock'>
+    <label>DEX</label>
+    <input class='value' name='dexterity' placeholder='&mdash;' />
+    <input class='modifier' name='dexterityModifier' placeholder='{{dexterityModifier}}' />
+  </div>
+
+  <div class='constitution vblock'>
+    <label>CON</label>
+    <input class='value' name='constitution' placeholder='&mdash;' />
+    <input class='modifier' name='constitutionModifier' placeholder='{{constitutionModifier}}' />
+  </div>
+
+  <div class='charisma vblock'>
+    <label>CHA</label>
+    <input class='value' name='charisma' placeholder='&mdash;' />
+    <input class='modifier' name='charismaModifier' placeholder='{{charismaModifier}}' />
+  </div>
+</div>
+
+<div>{{asset token}}</div>
+
+<script>
+  const resetToken = () => {
+    debugger
+    document.querySelector('*[name="token"]').value = ''
+  }
+</script>
+
+<button data-fileupload="token">{{#if token}}Change Token{{else}}Upload Token{{/if}}</button>
+<button onclick="resetToken">Remove Token</button>
+<button onclick="() => {
     debugger
     resetToken()
   }">Remove Token 2</button>
-  <input type="hidden" name="token" />
+<input type="hidden" name="token" />
 
 
-  <div class='combat grid'>
-    <div class='header'>
-      <h2>Combat</h2>
+<div class='combat grid'>
+  <div class='header'>
+    <h2>Combat</h2>
+  </div>
+  <div class='left'>
+    <div class='vblock'>
+      <label>HP</label>
+      <input name='hitpoints' placeholder='&mdash;' />
     </div>
-    <div class='left'>
-      <div class='vblock'>
-        <label>HP</label>
-        <input name='hitpoints' placeholder='&mdash;' />
-      </div>
-      <div class='vblock'>
-        <label>Max</label>
-        <input name='maxhitpoints' placeholder='&mdash;' />
-      </div>
+    <div class='vblock'>
+      <label>Max</label>
+      <input name='maxhitpoints' placeholder='&mdash;' />
     </div>
-    <div class='center'>
-      <div class='hblock'>
-        <label>Init</label>
-        <input name='initiative' placeholder='Initiative...' />
-      </div>
-      <div class='vblock'>
-        <label>Movement</label>
-        <div class='movement'>
-          <div class='inlineblock'>
-            <label for='move-encounter'>En</label>
-            <input name='move-encounter' placeholder='&mdash;' />
-          </div>
-          <div class='inlineblock'>
-            <label for='move-exploration'>Ex</label>
-            <input name='move-exploration' placeholder='&mdash;' />
-          </div>
-          <div class='inlineblock'>
-            <label for='move-overland'>Ov</label>
-            <input name='move-overland' placeholder='&mdash;' />
-          </div>
+  </div>
+  <div class='center'>
+    <div class='hblock'>
+      <label>Init</label>
+      <input name='initiative' placeholder='Initiative...' />
+    </div>
+    <div class='vblock'>
+      <label>Movement</label>
+      <div class='movement'>
+        <div class='inlineblock'>
+          <label for='move-encounter'>En</label>
+          <input name='move-encounter' placeholder='&mdash;' />
         </div>
-      </div>
-    </div>
-    <div class='right'>
-      <div class='vblock'>
-        <label>AC</label>
-        <input name='ac' placeholder='&mdash;' />
-      </div>
-      <div class='vblock'>
-        <label>Unarmored</label>
-        <input name='unarmoredac' placeholder='&mdash;' />
+        <div class='inlineblock'>
+          <label for='move-exploration'>Ex</label>
+          <input name='move-exploration' placeholder='&mdash;' />
+        </div>
+        <div class='inlineblock'>
+          <label for='move-overland'>Ov</label>
+          <input name='move-overland' placeholder='&mdash;' />
+        </div>
       </div>
     </div>
   </div>
+  <div class='right'>
+    <div class='vblock'>
+      <label>AC</label>
+      <input name='ac' placeholder='&mdash;' />
+    </div>
+    <div class='vblock'>
+      <label>Unarmored</label>
+      <input name='unarmoredac' placeholder='&mdash;' />
+    </div>
+  </div>
+</div>
 
-  <div class='abilitiesetc grid'>
-    <div class='abilities'>
-      <div class='header'>
-        <h2>Abilities</h2>
-      </div>
-      <div arrayname='abilities' accepts='abilities' class='array'>
-        <div class='arrayItem'>
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
+<div class='abilitiesetc grid'>
+  <div class='abilities'>
+    <div class='header'>
+      <h2>Abilities</h2>
+    </div>
+    <div arrayname='abilities' accepts='abilities' class='array'>
+      <div class='arrayItem'>
+        <button name='remove'>-</button>
+        <input type='hidden' name='documentId' />
+        <input name='name' />
       </div>
     </div>
-    <div class='skills'>
-      <div class='header'>
-        <h2>Skills</h2>
-      </div>
+  </div>
+  <div class='skills'>
+    <div class='header'>
+      <h2>Skills</h2>
+    </div>
 
-      <div arrayname='skills' accepts='skills' class="array">
-        <div class="arrayItem">
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
+    <div arrayname='skills' accepts='skills' class="array">
+      <div class="arrayItem">
+        <button name='remove'>-</button>
+        <input type='hidden' name='documentId' />
+        <input name='name' />
       </div>
     </div>
-    <div class='weapons'>
-      <div class='header'>
-        <h2>Weapons</h2>
-      </div>
+  </div>
+  <div class='weapons'>
+    <div class='header'>
+      <h2>Weapons</h2>
+    </div>
 
-      <div arrayname='weapons' accepts='weapons' class="array">
-        <div class="arrayItem">
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
+    <div arrayname='weapons' accepts='weapons' class="array">
+      <div class="arrayItem">
+        <button name='remove'>-</button>
+        <input type='hidden' name='documentId' />
+        <input name='name' />
       </div>
     </div>
   </div>
