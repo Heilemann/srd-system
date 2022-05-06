@@ -596,7 +596,12 @@
 <div>{{asset token}}</div>
 
 <script>
+  const derp = 'HELLO!'
+</script>
+
+<script>
   document.querySelector('#resetToken').addEventListener('click', function () {
+    console.log(derp)
     document.querySelector('*[name="token"]').value = ''
   });
 </script>
