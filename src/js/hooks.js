@@ -1,3 +1,15 @@
+/**
+ * Hooks are fired the by the application when certain events occur. The `hooks` object is
+ * a map of hooks that are fired by the application, with each key being the name of the
+ * hook, and the value being either a function, or an array of functions, to be called when
+ * the hook is fired.
+ *
+ * `beforeUpdateValues`
+ * - Fires after the values for the loaded document are changed, but before they are hydrated into the document.
+ * - The `values` object is the values that will be hydrated into the document.
+ * - Returned should be the values that will be hydrated into the document.
+ *
+ */
 const abilitymodifier = {
   3: '-3',
   4: '-2',
@@ -17,33 +29,35 @@ const abilitymodifier = {
   18: '+3',
 }
 
-const calculateAttributeModifier = value => {
+const doLookup = value => {
   const attributeValue = parseInt(value, 10)
+  const capValue = Math.max(Math.min(attributeValue, 18), 3)
 
-  if (attributeValue < 3) return '-3'
-  if (attributeValue > 18) return '+3'
-  if (typeof attributeValue === 'number') return abilitymodifier[attributeValue]
-  return ''
+  if (typeof attributeValue === 'number') {
+    return abilitymodifier[attributeValue]
+  } else {
+    return ''
+  }
+}
+
+const calculateAttributeModifier = value => {
+  const attributes = [
+    'strength',
+    'dexterity',
+    'constitution',
+    'intelligence',
+    'wisdom',
+    'charisma',
+  ]
+
+  attributes.forEach(attribute => {
+    const attributeModifier = calculateAttributeModifier(values[attribute])
+    values[attribute + 'Modifier'] = attributeModifier
+  })
+
+  return values
 }
 
 const hooks = {
-  updateValues: values => {
-    const attributes = [
-      'strength',
-      'dexterity',
-      'constitution',
-      'intelligence',
-      'wisdom',
-      'charisma',
-    ]
-
-    attributes.forEach(attribute => {
-      const attributeModifier = calculateAttributeModifier(values[attribute])
-      values[attribute + 'Modifier'] = attributeModifier
-    })
-
-    return values
-  },
+  beforeUpdateValues: calculateAttributeModifier,
 }
-
-// const partials = {}
