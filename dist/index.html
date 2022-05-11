@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <!-- <meta http-equiv="refresh" content="3"> -->
+  <title>System Previewer</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    const sendMessage = (message) => {
+      const previewSmall = document.getElementById('previewSmall').contentWindow
+      previewSmall.postMessage(message, '*')
+
+      const previewLarge = document.getElementById('previewLarge').contentWindow
+      previewLarge.postMessage(message, '*')
+    }
+
+    window.addEventListener('message', (e) => {
+      const message = e.data
+      console.log('parent heard message', message)
+    })
+
+    fetch('system.json')
+      .then(response => response.json())
+      .then(systemConfig => {
+        console.log(systemConfig)
+        const templates = systemConfig.templates
+        templates.forEach(template => {
+          const el = document.createElement('button')
+          const label = document.createTextNode(template.singularName)
+          el.appendChild(label)
+          el.addEventListener('click', (e) => {
+            document.querySelectorAll('#templates button').forEach(button => {
+              button.classList.remove('active')
+            })
+            e.target.classList.add('active')
+            sendMessage({
+              type: 'loadTemplate',
+              data: template.type
+            })
+          })
+          document.querySelector('#templates').appendChild(el)
+        })
+      })
+  </script>
+
+  <style>
+    #container {
+      display: flex;
+      /* align-items: center;
+      justify-content: center; */
+      height: 100vh;
+    }
+
+    #templates,
+    #hooks {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+    }
+
+    #hooks>*,
+    #templates>* {
+      flex: 0 0 auto;
+    }
+
+    #templates button.active {
+      outline: 2px solid red;
+    }
+
+    #previewContainer {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: flex;
+    }
+
+    #previewSmall {
+      width: 320px;
+    }
+
+    #previewLarge {
+      width: 670px;
+    }
+  </style>
+
+  <div id="container">
+    <div id="templates">
+      <div id="hooks">
+        <p>Hooks:</p>
+        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">updateValues</button>
+      </div>
+      <p>Templates:</p>
+    </div>
+    <div id="previewContainer">
+      <iframe src="iframe.html" id="previewSmall"></iframe>
+      <iframe src="iframe.html" id="previewLarge"></iframe>
+    </div>
+  </div>
+</body>
+
+</html>
