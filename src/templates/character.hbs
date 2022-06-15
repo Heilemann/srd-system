@@ -519,7 +519,20 @@
   }
 </style>
 
-<script>console.log(doLookup)</script>
+<script>
+  const click = (e) => {
+    console.log('clicked button', e)
+    window.top.postMessage(
+      {
+        source: 'Frame',
+        id: '123',
+        message: 'onMessage',
+        data: 'test'
+      },
+      'http://localhost:3000'
+    )
+  }
+</script>
 
 <div class='vitals grid'>
   <div class='logo'>
@@ -561,6 +574,7 @@
     <label>STR</label>
     <input class='value' name='strength' placeholder='&mdash;' />
     <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
+    <button class='roll' onclick=''>Roll</button>
   </div>
 
   <div class='intelligence vblock'>
