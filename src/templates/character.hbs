@@ -520,7 +520,7 @@
 </style>
 
 <script>
-  const click = (e) => {
+  let click = (e) => {
     console.log('clicked button', e)
     window.top.postMessage(
       {
@@ -575,6 +575,7 @@
     <label>STR</label>
     <input class='value' name='strength' placeholder='&mdash;' />
     <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
+    <button onclick="click">Click</button>
   </div>
 
   <div class='intelligence vblock'>

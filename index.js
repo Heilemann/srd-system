@@ -6,7 +6,7 @@ const app = express()
 app.use(express.static(path.join(__dirname, '/dist')))
 app.use('/js', express.static(path.resolve(__dirname, '/dist/js')))
 
-const PORT = process.env.PORT || 3004
+const PORT = process.env.PORT || 3005
 const server = http.createServer(app)
 
 server.listen(PORT, () => {
