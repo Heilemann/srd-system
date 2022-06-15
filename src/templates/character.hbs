@@ -522,15 +522,15 @@
 <script>
   let click = (e) => {
     console.log('CLICKED!')
-    // window.top.postMessage(
-    //   {
-    //     source: 'Frame',
-    //     id: '123',
-    //     message: 'onMessage',
-    //     data: 'test'
-    //   },
-    //   'http://localhost:3000'
-    // )
+    window.top.postMessage(
+      {
+        source: 'Frame',
+        id: '123',
+        message: 'onMessage',
+        data: 'test'
+      },
+      'http://localhost:3000'
+    )
   }
 </script>
 
