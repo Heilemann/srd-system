@@ -42,8 +42,7 @@ const doLookup = value => {
   }
 }
 
-const calculateAttributeModifier = value => {
-  console.log('calculateAttributeModifier', value)
+const calculateAttributeModifier = () => {
   const attributes = [
     'strength',
     'dexterity',
@@ -57,7 +56,7 @@ const calculateAttributeModifier = value => {
     const attributeModifier = calculateAttributeModifier(values[attribute])
     values[attribute + 'Modifier'] = attributeModifier
   })
-
+  debugger
   return values
 }
 
