@@ -43,6 +43,7 @@ const doLookup = value => {
 }
 
 const calculateAttributeModifier = value => {
+  console.log('calculateAttributeModifier', value)
   const attributes = [
     'strength',
     'dexterity',
