@@ -56,7 +56,7 @@ const calculateAttributeModifier = () => {
     const attributeModifier = calculateAttributeModifier(values[attribute])
     values[attribute + 'Modifier'] = attributeModifier
   })
-  debugger
+  console.log('srd modded values', values)
   return values
 }
 
