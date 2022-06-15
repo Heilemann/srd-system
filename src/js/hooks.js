@@ -1,4 +1,6 @@
 /**
+ * Hooks allo the frame to listen to updates from the application
+ *
  * Hooks are fired the by the application when certain events occur. The `hooks` object is
  * a map of hooks that are fired by the application, with each key being the name of the
  * hook, and the value being either a function, or an array of functions, to be called when
