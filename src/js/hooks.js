@@ -42,7 +42,7 @@ const doLookup = value => {
   }
 }
 
-const calculateAttributeModifier = () => {
+const calculateAttributeModifier = values => {
   const attributes = [
     'strength',
     'dexterity',
@@ -53,10 +53,10 @@ const calculateAttributeModifier = () => {
   ]
 
   attributes.forEach(attribute => {
-    const attributeModifier = calculateAttributeModifier(values[attribute])
+    const attributeModifier = doLookup(values[attribute])
     values[attribute + 'Modifier'] = attributeModifier
   })
-  console.log('srd modded values', values)
+
   return values
 }
 
