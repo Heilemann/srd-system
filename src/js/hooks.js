@@ -36,7 +36,7 @@ const doLookup = value => {
   const capValue = Math.max(Math.min(attributeValue, 18), 3)
 
   if (typeof attributeValue === 'number') {
-    return abilitymodifier[attributeValue]
+    return abilitymodifier[capValue]
   } else {
     return ''
   }
@@ -62,5 +62,5 @@ const calculateAttributeModifier = value => {
 }
 
 const hooks = {
-  beforeUpdateValues: calculateAttributeModifier,
+  updateValues: calculateAttributeModifier,
 }
