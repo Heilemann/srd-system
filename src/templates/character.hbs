@@ -573,7 +573,8 @@
     <label>STR</label>
     <input class='value' name='strength' placeholder='&mdash;' />
     <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
-    <button onclick="()=>{sendMessage('/r d20')}">Click</button>
+    <button
+      onclick="()=>{console.log('modifier', doc.values.strengthModifier); sendMessage(`/r d20 + ${doc.values.strengthModifier}`)}">Click</button>
   </div>
 
   <div class='intelligence vblock'>
