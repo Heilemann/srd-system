@@ -26,12 +26,6 @@ function compilecss() {
     .pipe(dest('/dist/css'))
 }
 
-const copyJS = () => {
-  // return gulp
-  //   .src('node_modules/handlebars/dist/handlebars.runtime.js')
-  //   .pipe(dest('dist/js/'))
-}
-
 function jsmin() {
   return src(systemConfig.scripts)
     .pipe(concat('scripts.js'))
@@ -143,7 +137,7 @@ const compileYAML = () => {
 
 function watchTask() {
   watch('src/scss/*.scss', compilecss)
-  watch('src/js/*.js', series(copyJS, jsmin))
+  watch('src/js/*.js', jsmin)
   watch('src/images/*.{jpg,png}', optimizeimg)
   watch('dist/images/*.{jpg,png}', webpImage)
   watch('src/templates/**/*.hbs', collateHandlebars)
