@@ -616,163 +616,83 @@
     <button
       onclick="()=>{console.log('modifier', doc.values.charismaModifier); sendMessage(`/r d20 + ${doc.values.charismaModifier}`)}">Roll</button>
   </div>
+</div>
 
 
-  <p>Token:</p>
-  <asset name="token"></asset>
+<p>Token:</p>
+<asset name="token"></asset>
 
-  <p>Portrait:</p>
-  <asset name="portrait"></asset>
+<p>Portrait:</p>
+<asset name="portrait"></asset>
 
-  <div class='combat grid'>
-    <div class='header'>
-      <h2>Combat</h2>
+<div class='combat grid'>
+  <div class='header'>
+    <h2>Combat</h2>
+  </div>
+  <div class='left'>
+    <div class='vblock'>
+      <label>HP</label>
+      <input name='hitpoints' placeholder='&mdash;' />
     </div>
-    <div class='left'>
-      <div class='vblock'>
-        <label>HP</label>
-        <input name='hitpoints' placeholder='&mdash;' />
-      </div>
-      <div class='vblock'>
-        <label>Max</label>
-        <input name='maxhitpoints' placeholder='&mdash;' />
-      </div>
+    <div class='vblock'>
+      <label>Max</label>
+      <input name='maxhitpoints' placeholder='&mdash;' />
     </div>
-    <div class='center'>
-      <div class='hblock'>
-        <label>Init</label>
-        <input name='initiative' placeholder='Initiative...' />
-      </div>
-      <div class='vblock'>
-        <label>Movement</label>
-        <div class='movement'>
-          <div class='inlineblock'>
-            <label for='move-encounter'>En</label>
-            <input name='move-encounter' placeholder='&mdash;' />
-          </div>
-          <div class='inlineblock'>
-            <label for='move-exploration'>Ex</label>
-            <input name='move-exploration' placeholder='&mdash;' />
-          </div>
-          <div class='inlineblock'>
-            <label for='move-overland'>Ov</label>
-            <input name='move-overland' placeholder='&mdash;' />
-          </div>
+  </div>
+  <div class='center'>
+    <div class='hblock'>
+      <label>Init</label>
+      <input name='initiative' placeholder='Initiative...' />
+    </div>
+    <div class='vblock'>
+      <label>Movement</label>
+      <div class='movement'>
+        <div class='inlineblock'>
+          <label for='move-encounter'>En</label>
+          <input name='move-encounter' placeholder='&mdash;' />
+        </div>
+        <div class='inlineblock'>
+          <label for='move-exploration'>Ex</label>
+          <input name='move-exploration' placeholder='&mdash;' />
+        </div>
+        <div class='inlineblock'>
+          <label for='move-overland'>Ov</label>
+          <input name='move-overland' placeholder='&mdash;' />
         </div>
       </div>
     </div>
-    <div class='right'>
-      <div class='vblock'>
-        <label>AC</label>
-        <input name='ac' placeholder='&mdash;' />
-      </div>
-      <div class='vblock'>
-        <label>Unarmored</label>
-        <input name='unarmoredac' placeholder='&mdash;' />
-      </div>
+  </div>
+  <div class='right'>
+    <div class='vblock'>
+      <label>AC</label>
+      <input name='ac' placeholder='&mdash;' />
+    </div>
+    <div class='vblock'>
+      <label>Unarmored</label>
+      <input name='unarmoredac' placeholder='&mdash;' />
     </div>
   </div>
+</div>
 
-  <div class='abilitiesetc grid'>
-    <div class='abilities'>
-      <div class='header'>
-        <h2>Abilities</h2>
-      </div>
-      <array arrayname='abilities' accepts='abilities' class='array'>
-        <div class='arrayItem'>
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
-      </array>
-    </div>
-    <div class='skills'>
-      <div class='header'>
-        <h2>Skills</h2>
-      </div>
-
-      <array arrayname='skills' accepts='skills' class="array">
-        <div class="arrayItem">
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
-      </array>
-    </div>
-    <div class='weapons'>
-      <div class='header'>
-        <h2>Weapons</h2>
-      </div>
-
-      <array arrayname='weapons' accepts='weapons' class="array">
-        <div class="arrayItem">
-          <button name='remove'>-</button>
-          <input type='hidden' name='documentId' />
-          <input name='name' />
-        </div>
-      </array>
-    </div>
-  </div>
-
-  <div class='savingthrows grid'>
+<div class='abilitiesetc grid'>
+  <div class='abilities'>
     <div class='header'>
-      <h2>Saving Throws</h2>
+      <h2>Abilities</h2>
     </div>
-
-    <div class='deathpoison vblock'>
-      <label>Death, Poison</label>
-      <input name='deathpoison' placeholder='&mdash;' />
-    </div>
-    <div class='magicwands vblock'>
-      <label>Magic Wands</label>
-      <input name='magicwands' placeholder='&mdash;' />
-    </div>
-    <div class='paralysispetrification vblock'>
-      <label>Paralysis, Petrif.</label>
-      <input name='paralysispetrification' placeholder='&mdash;' />
-    </div>
-    <div class='breathattacks vblock'>
-      <label>Breath Attacks</label>
-      <input name='breathattacks' placeholder='&mdash;' />
-    </div>
-    <div class='spellsrodsstaves vblock'>
-      <label>Spells, Rods, Staves</label>
-      <input name='spellsrodsstaves' placeholder='&mdash;' />
-    </div>
+    <array arrayname='abilities' accepts='abilities' class='array'>
+      <div class='arrayItem'>
+        <button name='remove'>-</button>
+        <input type='hidden' name='documentId' />
+        <input name='name' />
+      </div>
+    </array>
   </div>
-
-  <div class='treasure grid'>
+  <div class='skills'>
     <div class='header'>
-      <h2>Treasure</h2>
+      <h2>Skills</h2>
     </div>
 
-    <div class='platinum vblock'>
-      <label>PP</label>
-      <input name='platinum' placeholder='&mdash;' />
-    </div>
-    <div class='gold vblock'>
-      <label>GP</label>
-      <input name='gold' placeholder='&mdash;' />
-    </div>
-    <div class='electrum vblock'>
-      <label>EP</label>
-      <input name='electrum' placeholder='&mdash;' />
-    </div>
-    <div class='silver vblock'>
-      <label>SP</label>
-      <input name='silver' placeholder='&mdash;' />
-    </div>
-    <div class='copper vblock'>
-      <label>CP</label>
-      <input name='copper' placeholder='&mdash;' />
-    </div>
-  </div>
-
-  <div class='equipment'>
-    <div class='header'>
-      <h2>Equipment</h2>
-    </div>
-    <array arrayname='equipment' accepts='equipment' class="array">
+    <array arrayname='skills' accepts='skills' class="array">
       <div class="arrayItem">
         <button name='remove'>-</button>
         <input type='hidden' name='documentId' />
@@ -780,5 +700,86 @@
       </div>
     </array>
   </div>
+  <div class='weapons'>
+    <div class='header'>
+      <h2>Weapons</h2>
+    </div>
 
-  <div class='experience grid'></div>
+    <array arrayname='weapons' accepts='weapons' class="array">
+      <div class="arrayItem">
+        <button name='remove'>-</button>
+        <input type='hidden' name='documentId' />
+        <input name='name' />
+      </div>
+    </array>
+  </div>
+</div>
+
+<div class='savingthrows grid'>
+  <div class='header'>
+    <h2>Saving Throws</h2>
+  </div>
+
+  <div class='deathpoison vblock'>
+    <label>Death, Poison</label>
+    <input name='deathpoison' placeholder='&mdash;' />
+  </div>
+  <div class='magicwands vblock'>
+    <label>Magic Wands</label>
+    <input name='magicwands' placeholder='&mdash;' />
+  </div>
+  <div class='paralysispetrification vblock'>
+    <label>Paralysis, Petrif.</label>
+    <input name='paralysispetrification' placeholder='&mdash;' />
+  </div>
+  <div class='breathattacks vblock'>
+    <label>Breath Attacks</label>
+    <input name='breathattacks' placeholder='&mdash;' />
+  </div>
+  <div class='spellsrodsstaves vblock'>
+    <label>Spells, Rods, Staves</label>
+    <input name='spellsrodsstaves' placeholder='&mdash;' />
+  </div>
+</div>
+
+<div class='treasure grid'>
+  <div class='header'>
+    <h2>Treasure</h2>
+  </div>
+
+  <div class='platinum vblock'>
+    <label>PP</label>
+    <input name='platinum' placeholder='&mdash;' />
+  </div>
+  <div class='gold vblock'>
+    <label>GP</label>
+    <input name='gold' placeholder='&mdash;' />
+  </div>
+  <div class='electrum vblock'>
+    <label>EP</label>
+    <input name='electrum' placeholder='&mdash;' />
+  </div>
+  <div class='silver vblock'>
+    <label>SP</label>
+    <input name='silver' placeholder='&mdash;' />
+  </div>
+  <div class='copper vblock'>
+    <label>CP</label>
+    <input name='copper' placeholder='&mdash;' />
+  </div>
+</div>
+
+<div class='equipment'>
+  <div class='header'>
+    <h2>Equipment</h2>
+  </div>
+  <array arrayname='equipment' accepts='equipment' class="array">
+    <div class="arrayItem">
+      <button name='remove'>-</button>
+      <input type='hidden' name='documentId' />
+      <input name='name' />
+    </div>
+  </array>
+</div>
+
+<div class='experience grid'></div>
