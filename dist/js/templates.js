@@ -25,6 +25,9 @@ this["System"]["templates"]["character"] = Handlebars.template({"compiler":[8,">
 this["System"]["templates"]["equipment"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<script>\n  function drag(e) { const { type, id } = e.target.dataset\n  e.dataTransfer.setData(type, id) }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
 },"useData":true});
+this["System"]["templates"]["npm"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
+},"useData":true});
 this["System"]["templates"]["spell"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
 },"useData":true});

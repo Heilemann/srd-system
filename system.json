@@ -23,6 +23,14 @@
       "windowSize": "small"
     },
     {
+      "type": "npc",
+      "singularName": "NPC",
+      "pluralName": "NPCs",
+      "description": "A non player character.",
+      "file": "src/templates/npc.hbs",
+      "windowSize": "medium"
+    },
+    {
       "type": "spells",
       "singularName": "Spell",
       "pluralName": "Spells",
