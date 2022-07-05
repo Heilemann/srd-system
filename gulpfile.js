@@ -78,7 +78,6 @@ const collateHandlebars = () => {
 				{
 					imports: {
 						processPartialName: function (fileName) {
-							// Strip the extension and the underscore
 							return JSON.stringify(path.basename(fileName, '.js'))
 						},
 					},
