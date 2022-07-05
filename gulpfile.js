@@ -19,19 +19,19 @@ const jsonModify = require('gulp-json-modify')
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 
 function compilecss() {
-  return src('src/scss/*.scss')
-    .pipe(sass())
-    .pipe(prefix())
-    .pipe(minify())
-    .pipe(dest('/dist/css'))
+	return src('src/scss/*.scss')
+		.pipe(sass())
+		.pipe(prefix())
+		.pipe(minify())
+		.pipe(dest('/dist/css'))
 }
 
 function jsmin() {
-  return src(systemConfig.scripts)
-    .pipe(concat('scripts.js'))
-    .pipe(terser())
-    .pipe(
-      footer(`
+	return src(systemConfig.scripts)
+		.pipe(concat('scripts.js'))
+		.pipe(terser())
+		.pipe(
+			footer(`
       let scripts = {}
       if (typeof hooks !== 'undefined') {
         scripts = { ...scripts, hooks: hooks }
@@ -44,74 +44,73 @@ function jsmin() {
       }
       return scripts
     `),
-    )
-    .pipe(dest('dist/js'))
+		)
+		.pipe(dest('dist/js'))
 }
 
 function optimizeimg() {
-  return (
-    src('/src/images*.{jpg.,png}')
-      // .pipe(
-      //   imagemin([
-      //     imagemin.mozjpeg({ quality: 80, progressive: true }),
-      //     iamgemin.optipng({ optimizationLevel: 2 }),
-      //   ])
-      .pipe(dest('dist/images'))
-  )
-  // )
+	return (
+		src('/src/images*.{jpg.,png}')
+			// .pipe(
+			//   imagemin([
+			//     imagemin.mozjpeg({ quality: 80, progressive: true }),
+			//     iamgemin.optipng({ optimizationLevel: 2 }),
+			//   ])
+			.pipe(dest('dist/images'))
+	)
+	// )
 }
 
 function webpImage() {
-  return src('dist/images/*.{jpg,png}')
-    .pipe(imagewebp())
-    .pipe(dest('dist/images'))
+	return src('dist/images/*.{jpg,png}')
+		.pipe(imagewebp())
+		.pipe(dest('dist/images'))
 }
 
 const collateHandlebars = () => {
-  // Assume all partials are in a folder such as src/partials/**/*.hbs
-  var partials = src(['src/partials/**/*.hbs'])
-    .pipe(handlebars())
-    .pipe(
-      wrap(
-        'Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));',
-        {},
-        {
-          imports: {
-            processPartialName: function (fileName) {
-              // Strip the extension and the underscore
-              // Escape the output with JSON.stringify
-              return JSON.stringify(path.basename(fileName, '.js'))
-            },
-          },
-        },
-      ),
-    )
+	// Assume all partials are in a folder such as src/partials/**/*.hbs
+	var partials = src(['src/partials/**/*.hbs'])
+		.pipe(handlebars())
+		.pipe(
+			wrap(
+				'Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));',
+				{},
+				{
+					imports: {
+						processPartialName: function (fileName) {
+							// Strip the extension and the underscore
+							return JSON.stringify(path.basename(fileName, '.js'))
+						},
+					},
+				},
+			),
+		)
 
-  var templates = src('src/templates/**/*.hbs')
-    .pipe(handlebars())
-    .pipe(wrap('Handlebars.template(<%= contents %>)'))
-    .pipe(
-      declare({
-        namespace: 'System.templates',
-        noRedeclare: true, // Avoid duplicate declarations
-      }),
-    )
+	var templates = src('src/templates/**/*.hbs')
+		.pipe(handlebars())
+		.pipe(wrap('Handlebars.template(<%= contents %>)'))
+		.pipe(
+			declare({
+				namespace: 'System.templates',
+				noRedeclare: true, // Avoid duplicate declarations
+			}),
+		)
 
-  // Output both the partials and the templates as build/js/templates.js
-  return merge(partials, templates)
-    .pipe(concat('templates.js'))
-    .pipe(footer('return System.templates'))
-    .pipe(dest('dist/js/'))
+	// Output both the partials and the templates as build/js/templates.js
+	return merge(partials, templates)
+		.pipe(concat('templates.js'))
+		.pipe(footer('return System.templates'))
+		.pipe(dest('dist/js/'))
 }
 
 const copyUtils = () => {
-  return src('utils/*').pipe(dest('dist/'))
+	return src('utils/*').pipe(dest('dist/'))
 }
 
 const copyConfig = () => {
-  return src('system.json')
-    .pipe(jsonModify({ key: 'scripts', value: 'dist/js/scripts.js' }))
-    .pipe(dest('dist/'))
+	return src('system.json')
+		.pipe(jsonModify({ key: 'scripts', value: 'dist/js/scripts.js' }))
+		.pipe(dest('dist/'))
 }
 
 // function version() {
@@ -128,36 +127,36 @@ const copyConfig = () => {
 // }
 
 const compileYAML = () => {
-  return src('src/values.yml')
-    .pipe(yaml({ space: 2 }))
-    .pipe(dest('dist/'))
+	return src('src/values.yml')
+		.pipe(yaml({ space: 2 }))
+		.pipe(dest('dist/'))
 }
 
 // watchtask
 
 function watchTask() {
-  watch('src/scss/*.scss', compilecss)
-  watch('src/js/*.js', jsmin)
-  watch('src/images/*.{jpg,png}', optimizeimg)
-  watch('dist/images/*.{jpg,png}', webpImage)
-  watch('src/templates/**/*.hbs', collateHandlebars)
-  watch('utils/*.html', copyUtils)
-  watch('system.json', copyConfig)
-  watch('src/values.yml', compileYAML)
+	watch('src/scss/*.scss', compilecss)
+	watch('src/js/*.js', jsmin)
+	watch('src/images/*.{jpg,png}', optimizeimg)
+	watch('dist/images/*.{jpg,png}', webpImage)
+	watch('src/templates/**/*.hbs', collateHandlebars)
+	watch('utils/*.html', copyUtils)
+	watch('system.json', copyConfig)
+	watch('src/values.yml', compileYAML)
 }
 
 // default gulp
 exports.default = series(
-  parallel(
-    copyConfig,
-    copyUtils,
-    compilecss,
-    jsmin,
-    optimizeimg,
-    webpImage,
-    collateHandlebars,
-    compileYAML,
-  ),
-  watchTask,
+	parallel(
+		copyConfig,
+		copyUtils,
+		compilecss,
+		jsmin,
+		optimizeimg,
+		webpImage,
+		collateHandlebars,
+		compileYAML,
+	),
+	watchTask,
 )
 // exports.version = version
