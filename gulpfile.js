@@ -155,6 +155,7 @@ function watchTask() {
 	watch('src/js/*.js', jsmin)
 	watch('src/images/*.{jpg,png}', optimizeimg)
 	watch('dist/images/*.{jpg,png}', webpImage)
+	watch('src/partials/**/*.hbs', collatePartials)
 	watch('src/templates/**/*.hbs', collateHandlebars)
 	watch('utils/*.html', copyUtils)
 	watch('system.json', copyConfig)

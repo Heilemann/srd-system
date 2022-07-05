@@ -61,7 +61,11 @@ The document has access to a lot of the game's data, TKTK here's how:
 
 ## Partials
 
-Partials work slightly different than in a freeform Handlebars setup. For now they should be placed in the `partials` folder, and end in `.hbs`.
+Partials work slightly different than in a freeform Handlebars setup. For now they should be placed in the `partials` folder, and end in `.hbs`. The default gulp setup will use the file name as the partial name.
+
+### System Wide Styles
+
+The partial `src/partials/system-styles.hbs` is used to define the styles which will also be used by the platform system templates `scenes` and `notes`. Any styles put in there will be used to style the editors for those two templates as well.
 
 ## Scripting
 
