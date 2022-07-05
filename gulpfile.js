@@ -69,7 +69,6 @@ function webpImage() {
 }
 
 const collateHandlebars = () => {
-	// Assume all partials are in a folder such as src/partials/**/*.hbs
 	var partials = src(['src/partials/**/*.hbs'])
 		.pipe(handlebars())
 		.pipe(
@@ -96,7 +95,7 @@ const collateHandlebars = () => {
 			}),
 		)
 
-	// Output both the partials and the templates as build/js/templates.js
+	// Output both the partials and the templates as dist/js/templates.js
 	return merge(partials, templates)
 		.pipe(concat('templates.js'))
 		.pipe(footer('return System.templates'))
