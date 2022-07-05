@@ -1,8 +1,5 @@
 this["System"] = this["System"] || {};
 this["System"]["templates"] = this["System"]["templates"] || {};
-this["System"]["templates"]["bigderp"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "Derp!";
-},"useData":true});
 this["System"]["templates"]["character"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -27,14 +24,46 @@ this["System"]["templates"]["character"] = Handlebars.template({"compiler":[8,">
     + "' />\n    <button onclick=\"()=>{sendMessage(`/r d20 ${doc.values.charismaModifier}`)}\">Roll</button>\n  </div>\n</div>\n\n\n<p>Token:</p>\n<asset name=\"token\"></asset>\n\n<p>Portrait:</p>\n<asset name=\"portrait\"></asset>\n\n<div class='combat grid'>\n  <div class='header'>\n    <h2>Combat</h2>\n  </div>\n  <div class='left'>\n    <div class='vblock'>\n      <label>HP</label>\n      <input name='hitpoints' placeholder='&mdash;' />\n    </div>\n    <div class='vblock'>\n      <label>Max</label>\n      <input name='maxhitpoints' placeholder='&mdash;' />\n    </div>\n  </div>\n  <div class='center'>\n    <div class='hblock'>\n      <label>Init</label>\n      <input name='initiative' placeholder='Initiative...' />\n    </div>\n    <div class='vblock'>\n      <label>Movement</label>\n      <div class='movement'>\n        <div class='inlineblock'>\n          <label for='move-encounter'>En</label>\n          <input name='move-encounter' placeholder='&mdash;' />\n        </div>\n        <div class='inlineblock'>\n          <label for='move-exploration'>Ex</label>\n          <input name='move-exploration' placeholder='&mdash;' />\n        </div>\n        <div class='inlineblock'>\n          <label for='move-overland'>Ov</label>\n          <input name='move-overland' placeholder='&mdash;' />\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class='right'>\n    <div class='vblock'>\n      <label>AC</label>\n      <input name='ac' placeholder='&mdash;' />\n    </div>\n    <div class='vblock'>\n      <label>Unarmored</label>\n      <input name='unarmoredac' placeholder='&mdash;' />\n    </div>\n  </div>\n</div>\n\n<div class='abilitiesetc grid'>\n  <div class='abilities'>\n    <div class='header'>\n      <h2>Abilities</h2>\n    </div>\n    <array arrayname='abilities' accepts='abilities' class='array'>\n      <div class='arrayItem'>\n        <button name='remove'>-</button>\n        <input type='hidden' name='documentId' />\n        <input name='name' />\n      </div>\n    </array>\n  </div>\n\n  <div class='skills'>\n    <div class='header'>\n      <h2>Skills</h2>\n    </div>\n    <array arrayname='skills' accepts='skills' class=\"array\">\n      <div class=\"arrayItem\">\n        <button name='remove'>-</button>\n        <input type='hidden' name='documentId' />\n        <input name='name' />\n      </div>\n    </array>\n  </div>\n\n  <div class='weapons'>\n    <div class='header'>\n      <h2>Weapons</h2>\n    </div>\n    <array arrayname='weapons' accepts='weapons' class=\"array\">\n      <div class=\"arrayItem\">\n        <button name='remove'>-</button>\n        <input type='hidden' name='documentId' />\n        <input name='name' />\n      </div>\n    </array>\n  </div>\n</div>\n\n<div class='savingthrows grid'>\n  <div class='header'>\n    <h2>Saving Throws</h2>\n  </div>\n\n  <div class='deathpoison vblock'>\n    <label>Death, Poison</label>\n    <input name='deathpoison' placeholder='&mdash;' />\n  </div>\n  <div class='magicwands vblock'>\n    <label>Magic Wands</label>\n    <input name='magicwands' placeholder='&mdash;' />\n  </div>\n  <div class='paralysispetrification vblock'>\n    <label>Paralysis, Petrif.</label>\n    <input name='paralysispetrification' placeholder='&mdash;' />\n  </div>\n  <div class='breathattacks vblock'>\n    <label>Breath Attacks</label>\n    <input name='breathattacks' placeholder='&mdash;' />\n  </div>\n  <div class='spellsrodsstaves vblock'>\n    <label>Spells, Rods, Staves</label>\n    <input name='spellsrodsstaves' placeholder='&mdash;' />\n  </div>\n</div>\n\n<div class='treasure grid'>\n  <div class='header'>\n    <h2>Treasure</h2>\n  </div>\n\n  <div class='platinum vblock'>\n    <label>PP</label>\n    <input name='platinum' placeholder='&mdash;' />\n  </div>\n  <div class='gold vblock'>\n    <label>GP</label>\n    <input name='gold' placeholder='&mdash;' />\n  </div>\n  <div class='electrum vblock'>\n    <label>EP</label>\n    <input name='electrum' placeholder='&mdash;' />\n  </div>\n  <div class='silver vblock'>\n    <label>SP</label>\n    <input name='silver' placeholder='&mdash;' />\n  </div>\n  <div class='copper vblock'>\n    <label>CP</label>\n    <input name='copper' placeholder='&mdash;' />\n  </div>\n</div>\n\n<div class='equipment'>\n  <div class='header'>\n    <h2>Equipment</h2>\n  </div>\n  <array arrayname='equipment' accepts='equipment' class=\"array\">\n    <div class=\"arrayItem\">\n      <button name='remove'>-</button>\n      <input type='hidden' name='documentId' />\n      <input name='name' />\n    </div>\n  </array>\n</div>\n\n<div class='experience grid'></div>";
 },"usePartial":true,"useData":true});
 this["System"]["templates"]["equipment"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<script>\n  function drag(e) { const { type, id } = e.target.dataset\n  e.dataTransfer.setData(type, id) }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
-},"useData":true});
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = container.invokePartial(lookupProperty(partials,"baseStyle"),depth0,{"name":"baseStyle","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "\n<script>\n  function drag(e) {\n    const { type, id } = e.target.dataset\n    e.dataTransfer.setData(type, id)\n  }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
+},"usePartial":true,"useData":true});
 this["System"]["templates"]["npc"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
-},"useData":true});
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = container.invokePartial(lookupProperty(partials,"baseStyle"),depth0,{"name":"baseStyle","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
+},"usePartial":true,"useData":true});
 this["System"]["templates"]["spell"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
-},"useData":true});
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = container.invokePartial(lookupProperty(partials,"baseStyle"),depth0,{"name":"baseStyle","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='description'>Description:</label>\n  <input name='description' />\n</p>";
+},"usePartial":true,"useData":true});
 this["System"]["templates"]["weapon"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<script>\n  function drag(e) { const { type, id } = e.target.dataset\n  e.dataTransfer.setData(type, id) }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
-},"useData":true});return System.templates
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = container.invokePartial(lookupProperty(partials,"baseStyle"),depth0,{"name":"baseStyle","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "\n<script>\n  function drag(e) {\n    const { type, id } = e.target.dataset\n    e.dataTransfer.setData(type, id)\n  }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
+},"usePartial":true,"useData":true});return System.templates

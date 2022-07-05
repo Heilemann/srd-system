@@ -1,6 +1,10 @@
+{{> baseStyle}}
+
 <script>
-  function drag(e) { const { type, id } = e.target.dataset
-  e.dataTransfer.setData(type, id) }
+  function drag(e) {
+    const { type, id } = e.target.dataset
+    e.dataTransfer.setData(type, id)
+  }
 </script>
 
 <p>

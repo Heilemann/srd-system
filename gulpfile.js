@@ -16,6 +16,7 @@ const merge = require('merge-stream')
 const yaml = require('gulp-yaml')
 const jsonModify = require('gulp-json-modify')
 var path = require('path')
+var filesTokeys = require('gulp-file-contents-to-keys')
 
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 
@@ -66,6 +67,21 @@ function webpImage() {
 	return src('dist/images/*.{jpg,png}')
 		.pipe(imagewebp())
 		.pipe(dest('dist/images'))
+}
+
+const collatePartials = () => {
+	return src('src/partials/**/*.hbs')
+		.pipe(
+			filesTokeys({
+				name: 'const partials',
+				fileName: 'partials.js',
+				minify: true,
+				removeFileTypes: true,
+				folderDelimiter: '|',
+			}),
+		)
+		.pipe(footer('return partials'))
+		.pipe(dest('dist/js'))
 }
 
 const collateHandlebars = () => {
@@ -154,6 +170,7 @@ exports.default = series(
 		jsmin,
 		optimizeimg,
 		webpImage,
+		collatePartials,
 		collateHandlebars,
 		compileYAML,
 	),
