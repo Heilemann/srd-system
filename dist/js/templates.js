@@ -3,7 +3,7 @@ this['System']['templates'] = this['System']['templates'] || {}
 this['System']['templates']['character'] = Handlebars.template({
 	compiler: [8, '>= 4.3.0'],
 	main: function (container, depth0, helpers, partials, data) {
-		console.log('partials', partials)
+		debugger
 		var stack1,
 			helper,
 			alias1 = depth0 != null ? depth0 : container.nullContext || {},
