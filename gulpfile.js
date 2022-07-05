@@ -15,6 +15,7 @@ const concat = require('gulp-concat')
 const merge = require('merge-stream')
 const yaml = require('gulp-yaml')
 const jsonModify = require('gulp-json-modify')
+var path = require('path')
 
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 
