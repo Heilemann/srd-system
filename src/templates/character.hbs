@@ -520,12 +520,19 @@
     <h2>Ability Scores</h2>
   </div>
 
-  <div class='strength vblock'>
+  {{> attribute label='STR' value='strength' modifier='strengthModifier' }}
+  {{> attribute label='INT' value='intelligence' modifier='intelligenceModifier' }}
+  {{> attribute label='WIS' value='wisdom' modifier='wisdomModifier' }}
+  {{> attribute label='DEX' value='dexterity' modifier='dexterityModifier' }}
+  {{> attribute label='CON' value='constitution' modifier='constitutionModifier' }}
+  {{> attribute label='CHA' value='charisma' modifier='charismaModifier' }}
+  <!-- 
+ <div class='strength vblock'>
     <label>STR</label>
     <input class='value' name='strength' placeholder='&mdash;' />
     <input class='modifier' name='strengthModifier' placeholder='{{strengthModifier}}' />
     <button onclick="()=>{sendMessage(`/r d20 ${doc.values.strengthModifier}`)}">Roll</button>
-  </div>
+  </div> 
 
   <div class='intelligence vblock'>
     <label>INT</label>
@@ -561,6 +568,8 @@
     <input class='modifier' name='charismaModifier' placeholder='{{charismaModifier}}' />
     <button onclick="()=>{sendMessage(`/r d20 ${doc.values.charismaModifier}`)}">Roll</button>
   </div>
+-->
+
 </div>
 
 
