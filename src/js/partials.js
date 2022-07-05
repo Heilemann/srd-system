@@ -7,5 +7,11 @@
  */
 
 const partials = {
-  header: '<h1>{{title}}</h1>',
+	header: '<h1>{{title}}</h1>',
+
+	baseStyle: `<style>
+    body {
+      margin: 0;
+      padding: 20px;
+  </style > `,
 }
