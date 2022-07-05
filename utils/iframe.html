@@ -19,7 +19,9 @@
 
   <script>
     let templates = {}
-    let hooks = {}
+    let hooks
+    let helpers
+    let partials
 
     const messageParent = (message) => {
       const parent = window.top
@@ -37,8 +39,6 @@
 
     // load the given (compiled) handlebars template
     const loadTemplate = (template) => {
-      console.log('loading template', templates, template)
-
       localStorage.setItem('template', template)
 
       document.getElementById('templateContainer').innerHTML = templates[template](
@@ -65,8 +65,15 @@
         fetch('./js/scripts.js')
           .then(response => response.text())
           .then(scripts => {
-            hooks = evaluateScripts(scripts)
-            console.log('hooks', hooks)
+            const evaluatedScripts = evaluateScripts(scripts)
+
+            hooks = evaluatedScripts.hooks
+            helpers = evaluatedScripts.helpers
+            partials = evaluatedScripts.partials
+
+            // systemHooks.current = hooks || {} // not defined
+            if (helpers) Handlebars.registerHelper(helpers)
+            if (partials) Handlebars.registerPartial(partials)
 
             fetch('values.json')
               .then(response => response.json())

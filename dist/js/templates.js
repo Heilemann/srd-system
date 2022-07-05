@@ -1,6 +1,3 @@
-Handlebars.registerPartial("qwe", Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "This is the 'qwe' partial";
-},"useData":true}));
 this["System"] = this["System"] || {};
 this["System"]["templates"] = this["System"]["templates"] || {};
 this["System"]["templates"]["bigderp"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {

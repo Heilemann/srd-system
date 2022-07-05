@@ -69,21 +69,21 @@ function webpImage() {
 }
 
 const collateHandlebars = () => {
-	var partials = src(['src/partials/**/*.hbs'])
-		.pipe(handlebars())
-		.pipe(
-			wrap(
-				'Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));',
-				{},
-				{
-					imports: {
-						processPartialName: function (fileName) {
-							return JSON.stringify(path.basename(fileName, '.js'))
-						},
-					},
-				},
-			),
-		)
+	// var partials = src(['src/partials/**/*.hbs'])
+	// 	.pipe(handlebars())
+	// 	.pipe(
+	// 		wrap(
+	// 			'Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));',
+	// 			{},
+	// 			{
+	// 				imports: {
+	// 					processPartialName: function (fileName) {
+	// 						return JSON.stringify(path.basename(fileName, '.js'))
+	// 					},
+	// 				},
+	// 			},
+	// 		),
+	// 	)
 
 	var templates = src('src/templates/**/*.hbs')
 		.pipe(handlebars())
@@ -96,7 +96,8 @@ const collateHandlebars = () => {
 		)
 
 	// Output both the partials and the templates as dist/js/templates.js
-	return merge(partials, templates)
+	// return merge(partials, templates)
+	return merge(templates)
 		.pipe(concat('templates.js'))
 		.pipe(footer('return System.templates'))
 		.pipe(dest('dist/js/'))

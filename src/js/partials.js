@@ -13,5 +13,10 @@ const partials = {
     body {
       margin: 0;
       padding: 20px;
+    }
+
+    * {
+      outline: 1px solid red;
+    }
   </style > `,
 }
