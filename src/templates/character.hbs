@@ -520,12 +520,13 @@
     <h2>Ability Scores</h2>
   </div>
 
-  {{> attribute label='STR' value='strength' modifier='strengthModifier' }}
-  {{> attribute label='INT' value='intelligence' modifier='intelligenceModifier' }}
-  {{> attribute label='WIS' value='wisdom' modifier='wisdomModifier' }}
-  {{> attribute label='DEX' value='dexterity' modifier='dexterityModifier' }}
-  {{> attribute label='CON' value='constitution' modifier='constitutionModifier' }}
-  {{> attribute label='CHA' value='charisma' modifier='charismaModifier' }}
+  {{> attribute label='STR' value='strength' modifier='strengthModifier' modifierValue={{strengthModifier}}}}
+  {{> attribute label='INT' value='intelligence' modifier='intelligenceModifier' modifierValue={{intelligenceModifier}}}}
+  {{> attribute label='WIS' value='wisdom' modifier='wisdomModifier' modifierValue={{wisdomModifier}}}}
+  {{> attribute label='DEX' value='dexterity' modifier='dexterityModifier' modifierValue={{dexterityModifier}}}}
+  {{> attribute label='CON' value='constitution' modifier='constitutionModifier' modifierValue={{constitutionModifier}}}}
+  {{> attribute label='CHA' value='charisma' modifier='charismaModifier' modifierValue={{charismaModifier}}}}
+
   <!-- 
  <div class='strength vblock'>
     <label>STR</label>
