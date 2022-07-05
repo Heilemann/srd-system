@@ -59,7 +59,11 @@ The document has access to a lot of the game's data, TKTK here's how:
 
 `documents`, `assets` etc.
 
-### Scripting
+## Partials
+
+Partials work slightly different than in a freeform Handlebars setup. For now they should be placed in the `partials` folder, and end in `.hbs`.
+
+## Scripting
 
 Any javascript files found in `./src/js/*` will be concatenated into a single file, tersified and output into `./dist/js/scripts.js`.
 
@@ -69,7 +73,7 @@ Due to the concatenization--done because we store and transport the scripts in a
 - You can't require or import (at least on our end, if you pre-process you can do whatever you want).
 - You can include `<script>` tags in the handlebar files, but due to on-the-fly re-instantiation, don't use `const` for variables, use `var` or `let` instead, at least to avoid console errors.
 
-Otherwise you can include any assisting code you need, but the platform will recognize only three variable names, all of which are optional: `hooks`, `helpers`, and `partials`.
+Otherwise you can include any assisting code you need, but the platform will recognize only three variable names, all of which are optional: `hooks`, `helpers`.
 
 You can structure your files anyway you want, the default is to have one file for each of the three variable names.
 

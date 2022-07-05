@@ -69,20 +69,31 @@
 
             hooks = evaluatedScripts.hooks
             helpers = evaluatedScripts.helpers
-            partials = evaluatedScripts.partials
 
             // systemHooks.current = hooks || {} // not defined
             if (helpers) Handlebars.registerHelper(helpers)
-            if (partials) Handlebars.registerPartial(partials)
 
-            fetch('values.json')
-              .then(response => response.json())
-              .then(values => {
-                // const t = localStorage.getItem('template') || templates[0].type
+            fetch('./js/partials.js')
+              .then(response => response.text())
+              .then(partials => {
+                const evaluatedPartials = evaluateScripts(partials)
 
-                console.log('values', values.character)
+                if (evaluatedPartials) {
+                  Object.keys(evaluatedPartials).forEach(key => {
+                    const partialName = key.replace(/\//g, '') // remove slashes introduced by gulp (fix in gulp later)
+                    Handlebars.registerPartial(partialName, evaluatedPartials[key])
+                  })
+                }
 
-                loadTemplate('character', values['character'])
+                fetch('values.json')
+                  .then(response => response.json())
+                  .then(values => {
+                    // const t = localStorage.getItem('template') || templates[0].type
+
+                    console.log('values', values.character)
+
+                    loadTemplate('character', values['character'])
+                  })
               })
           })
       })
