@@ -31,21 +31,28 @@
       .then(response => response.json())
       .then(systemConfig => {
         console.log(systemConfig)
+
         const templates = systemConfig.templates
+
         templates.forEach(template => {
           const el = document.createElement('button')
           const label = document.createTextNode(template.singularName)
+
           el.appendChild(label)
+
           el.addEventListener('click', (e) => {
             document.querySelectorAll('#templates button').forEach(button => {
               button.classList.remove('active')
             })
+
             e.target.classList.add('active')
+
             sendMessage({
               type: 'loadTemplate',
               data: template.type
             })
           })
+
           document.querySelector('#templates').appendChild(el)
         })
       })
