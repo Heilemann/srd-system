@@ -2,27 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="reset.css">
-  <!-- <meta http-equiv="refresh" content="3"> -->
   <title>System Previewer</title>
+
+  <link rel="stylesheet" href="reset.css" />
+
+  <style>
+    html {
+      background: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html {
+        background: #000;
+        color: white;
+      }
+    }
+
+    iframe {
+      border: none;
+      margin: 10px;
+      border-radius: 20px;
+    }
+  </style>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta http-equiv="refresh" content="3"> -->
 </head>
 
 <body>
   <div id="app"></div>
 
   <script>
-    const sendMessage = (message) => {
-      const previewSmall = document.getElementById('previewSmall').contentWindow
+    const sendMessage = message => {
+      const previewSmall =
+        document.getElementById('previewSmall').contentWindow
       previewSmall.postMessage(message, '*')
 
-      const previewLarge = document.getElementById('previewLarge').contentWindow
+      const previewLarge =
+        document.getElementById('previewLarge').contentWindow
       previewLarge.postMessage(message, '*')
     }
 
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', e => {
       const message = e.data
       console.log('parent heard message', message)
     })
@@ -40,7 +63,7 @@
 
           el.appendChild(label)
 
-          el.addEventListener('click', (e) => {
+          el.addEventListener('click', e => {
             document.querySelectorAll('#templates button').forEach(button => {
               button.classList.remove('active')
             })
@@ -49,7 +72,7 @@
 
             sendMessage({
               type: 'loadTemplate',
-              data: template.type
+              data: template.type,
             })
           })
 
@@ -102,7 +125,9 @@
     <div id="templates">
       <div id="hooks">
         <p>Hooks:</p>
-        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">updateValues</button>
+        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">
+          updateValues
+        </button>
       </div>
       <p>Templates:</p>
     </div>
