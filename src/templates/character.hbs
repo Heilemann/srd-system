@@ -489,36 +489,13 @@
     <h1>Old-School Essentials</h1>
     <div class='subhead'>Retro Adventure Game</div>
   </div>
+
   {{> hfield label='PC' name='name' placeholder='Name...' }}
-  <div class='pcname hblock'>
-    <label>PC</label>
-    <input placeholder='Name...' name='name' />
-  </div>
-  {{> hfield label='' name='' }}
-  <div class='alignment hblock'>
-    <label>AL</label>
-    <input placeholder='Alignment...' name='alignment' />
-  </div>
-  {{> hfield label='' name='' }}
-  <div class='class hblock'>
-    <label>Class</label>
-    <input placeholder='Class...' name='Class' />
-  </div>
-  {{> hfield label='' name='' }}
-  <div class='level hblock'>
-    <label>LVL</label>
-    <input placeholder='Level...' name='level' />
-  </div>
-  {{> hfield label='' name='' }}
-  <div class='title hblock'>
-    <label>Title</label>
-    <input placeholder='Title...' name='title' />
-  </div>
-  {{> hfield label='' name='' }}
-  <div class='hitdie hblock'>
-    <label>HD</label>
-    <input placeholder='Hit Die...' name='hitdie' />
-  </div>
+  {{> hfield label='AL' name='alignment' placeholder='Alignment...' }}
+  {{> hfield label='Class' name='class' placeholder='Class...' }}
+  {{> hfield label='LVL' name='level' placeholder='0' }}
+  {{> hfield label='Title' name='title' placeholder='Title...' }}
+  {{> hfield label='HD' name='hitdie' placeholder='Hit Die...' }}
 </div>
 
 <div class='attributes grid'>
