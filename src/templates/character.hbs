@@ -489,26 +489,32 @@
     <h1>Old-School Essentials</h1>
     <div class='subhead'>Retro Adventure Game</div>
   </div>
+  {{> hfield label='PC' name='name' placeholder='Name...' }}
   <div class='pcname hblock'>
     <label>PC</label>
     <input placeholder='Name...' name='name' />
   </div>
+  {{> hfield label='' name='' }}
   <div class='alignment hblock'>
     <label>AL</label>
     <input placeholder='Alignment...' name='alignment' />
   </div>
+  {{> hfield label='' name='' }}
   <div class='class hblock'>
     <label>Class</label>
     <input placeholder='Class...' name='Class' />
   </div>
+  {{> hfield label='' name='' }}
   <div class='level hblock'>
     <label>LVL</label>
     <input placeholder='Level...' name='level' />
   </div>
+  {{> hfield label='' name='' }}
   <div class='title hblock'>
     <label>Title</label>
     <input placeholder='Title...' name='title' />
   </div>
+  {{> hfield label='' name='' }}
   <div class='hitdie hblock'>
     <label>HD</label>
     <input placeholder='Hit Die...' name='hitdie' />
@@ -520,17 +526,17 @@
     <h2>Ability Scores</h2>
   </div>
 
-  {{> attribute label='STR' valueName='strength' modifierName='strengthModifier' modifierValue=strengthModifier}}
+  {{> attribute label='STR' name='strength' placeholder='&mdash;' modifierName='strengthModifier' modifierValue=strengthModifier}}
 
-  {{> attribute label='INT' valueName='intelligence' modifierName='intelligenceModifier' modifierValue=intelligenceModifier}}
+  {{> attribute label='INT' name='intelligence' placeholder='&mdash;' modifierName='intelligenceModifier' modifierValue=intelligenceModifier}}
 
-  {{> attribute label='WIS' valueName='wisdom' modifierName='wisdomModifier' modifierValue=wisdomModifier}}
+  {{> attribute label='WIS' name='wisdom' placeholder='&mdash;' modifierName='wisdomModifier' modifierValue=wisdomModifier}}
 
-  {{> attribute label='DEX' valueName='dexterity' modifierName='dexterityModifier' modifierValue=dexterityModifier}}
+  {{> attribute label='DEX' name='dexterity' placeholder='&mdash;' modifierName='dexterityModifier' modifierValue=dexterityModifier}}
 
-  {{> attribute label='CON' valueName='constitution' modifierName='constitutionModifier' modifierValue=constitutionModifier}}
+  {{> attribute label='CON' name='constitution' placeholder='&mdash;' modifierName='constitutionModifier' modifierValue=constitutionModifier}}
 
-  {{> attribute label='CHA' valueName='charisma' modifierName='charismaModifier' modifierValue=charismaModifier}}
+  {{> attribute label='CHA' name='charisma' placeholder='&mdash;' modifierName='charismaModifier' modifierValue=charismaModifier}}
 </div>
 
 
@@ -632,11 +638,11 @@
     <h2>Saving Throws</h2>
   </div>
 
-  {{> save label='Death, Poison' valueName='deathPoison'}}
-  {{> save label='Wands' valueName='wands'}}
-  {{> save label='Paralysis, Petrification' valueName='paralysis'}}
-  {{> save label='Breath' valueName='breath'}}
-  {{> save label='Spells, Rods, Staves' valueName='spells'}}
+  {{> vfield label='Death, Poison' name='deathPoison' placeholder='0'}}
+  {{> vfield label='Wands' name='wands' placeholder='0'}}
+  {{> vfield label='Paralysis, Petrification' name='paralysis' placeholder='0'}}
+  {{> vfield label='Breath' name='breath' placeholder='0'}}
+  {{> vfield label='Spells, Rods, Staves' name='spells' placeholder='0'}}
 </div>
 
 <div class='treasure grid'>
@@ -644,26 +650,12 @@
     <h2>Treasure</h2>
   </div>
 
-  <div class='platinum vblock'>
-    <label>PP</label>
-    <input name='platinum' placeholder='&mdash;' />
-  </div>
-  <div class='gold vblock'>
-    <label>GP</label>
-    <input name='gold' placeholder='&mdash;' />
-  </div>
-  <div class='electrum vblock'>
-    <label>EP</label>
-    <input name='electrum' placeholder='&mdash;' />
-  </div>
-  <div class='silver vblock'>
-    <label>SP</label>
-    <input name='silver' placeholder='&mdash;' />
-  </div>
-  <div class='copper vblock'>
-    <label>CP</label>
-    <input name='copper' placeholder='&mdash;' />
-  </div>
+  {{> hfield label='PP' name='platinum' placeholder='0'}}
+  {{> hfield label='GP' name='gold' placeholder='0'}}
+  {{> hfield label='EP' name='electrum' placeholder='0'}}
+  {{> hfield label='SP' name='silver' placeholder='0'}}
+  {{> hfield label='CP' name='copper' placeholder='0'}}
+
 </div>
 
 <div class='equipment'>

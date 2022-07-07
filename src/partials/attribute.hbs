@@ -1,6 +1,6 @@
-<div class='{{valueName}} vblock'>
+<div class='{{name}} vblock'>
   <label>{{label}}</label>
-  <input class='value' name='{{valueName}}' placeholder='&mdash;' />
+  <input class='value' name='{{name}}' placeholder='&mdash;' />
   <input class='modifier' name='{{modifierName}}' placeholder='{{modifierValue}}' />
   <button onclick="()=>{sendMessage(`/r d20 ${doc.values['{{modifierName}}']}`)}">Roll</button>
 </div>
