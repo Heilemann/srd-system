@@ -148,8 +148,6 @@ const compileYAML = () => {
 		.pipe(dest('dist/'))
 }
 
-// watchtask
-
 function watchTask() {
 	watch('src/scss/*.scss', compilecss)
 	watch('src/js/*.js', jsmin)
