@@ -1,0 +1,13 @@
+<script>
+  let sendMessage = (message) => {
+    window.top.postMessage(
+      {
+        source: 'Frame',
+        id: '123',
+        message: 'onMessage',
+        data: message
+      },
+      'http://localhost:3000'
+    )
+  }
+</script>

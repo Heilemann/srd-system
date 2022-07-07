@@ -1,4 +1,5 @@
 {{> system-style}}
+{{> sendMessage}}
 
 <style>
   .subhead {
@@ -470,19 +471,6 @@
   }
 </style>
 
-<script>
-  let sendMessage = (message) => {
-    window.top.postMessage(
-      {
-        source: 'Frame',
-        id: '123',
-        message: 'onMessage',
-        data: message
-      },
-      'http://localhost:3000'
-    )
-  }
-</script>
 
 <div class='vitals grid'>
   <div class='logo'>

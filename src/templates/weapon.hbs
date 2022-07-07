@@ -1,4 +1,5 @@
 {{> system-style}}
+{{> sendMessage}}
 
 <script>
   function drag(e) {
@@ -16,7 +17,6 @@
   <label for='damage'>Damage:</label>
   <input name='damage' />
   <button onclick="() => {
-    debugger
     sendMessage('/r {{damage}}')
   }">Roll</button>
 </p>

@@ -3,7 +3,6 @@
   <input class='value' name='{{name}}' placeholder='&mdash;' />
   <input class='modifier' name='{{modifierName}}' placeholder='{{modifierValue}}' />
   <button onclick="() => {
-    debugger;
     sendMessage(`/r d20 ${doc.values['{{modifierName}}']}`)
   }">Roll</button>
 </div>
