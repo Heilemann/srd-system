@@ -15,7 +15,10 @@
 <p>
   <label for='damage'>Damage:</label>
   <input name='damage' />
-  <button onclick="()=>{sendMessage(`/r {{damage}}`)}">Roll</button>
+  <button onclick="() => {
+    debugger
+    sendMessage('/r {{damage}}')
+  }">Roll</button>
 </p>
 
 <p>

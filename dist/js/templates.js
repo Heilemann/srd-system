@@ -84,7 +84,7 @@ this["System"]["templates"]["weapon"] = Handlebars.template({"compiler":[8,">= 4
     };
 
   return ((stack1 = container.invokePartial(lookupProperty(partials,"system-style"),depth0,{"name":"system-style","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "\n<script>\n  function drag(e) {\n    const { type, id } = e.target.dataset\n    e.dataTransfer.setData(type, id)\n  }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='damage'>Damage:</label>\n  <input name='damage' />\n  <button onclick=\"()=>{sendMessage(`/r "
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"damage") || (depth0 != null ? lookupProperty(depth0,"damage") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"damage","hash":{},"data":data,"loc":{"start":{"line":18,"column":40},"end":{"line":18,"column":50}}}) : helper)))
-    + "`)}\">Roll</button>\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
+    + "\n<script>\n  function drag(e) {\n    const { type, id } = e.target.dataset\n    e.dataTransfer.setData(type, id)\n  }\n</script>\n\n<p>\n  <label for='name'>Name:</label>\n  <input name='name' />\n</p>\n\n<p>\n  <label for='damage'>Damage:</label>\n  <input name='damage' />\n  <button onclick=\"() => {\n    debugger\n    sendMessage('/r "
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"damage") || (depth0 != null ? lookupProperty(depth0,"damage") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"damage","hash":{},"data":data,"loc":{"start":{"line":20,"column":20},"end":{"line":20,"column":30}}}) : helper)))
+    + "')\n  }\">Roll</button>\n</p>\n\n<p>\n  <label for='weight'>Weight:</label>\n  <input name='weight' />\n</p>";
 },"usePartial":true,"useData":true});return System.templates
