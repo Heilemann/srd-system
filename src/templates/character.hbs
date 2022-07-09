@@ -4,7 +4,7 @@
 <style>
   .subhead {
     font-size: 11px;
-    background: black;
+    background: #111;
     color: white;
     text-align: center;
     padding: 5px;
@@ -25,7 +25,7 @@
 
   .hblock>label,
   .vblock>label {
-    background: black;
+    background: #111;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -44,7 +44,7 @@
   .vblock input {
     background: white;
     flex: auto;
-    border: 1px solid black;
+    border: 1px solid #111;
     padding: 5px;
     padding-right: 0;
     margin: 0;
@@ -54,10 +54,10 @@
     width: 60%;
   }
 
-  /* h2:before { content: ' '; background: black; position:
+  /* h2:before { content: ' '; background: #111; position:
   absolute; height: 30px; width: 20px; left: 0px; } */
   /* h2:after { content: '
-  '; background: black; position: absolute; height: 30px; width: 1000px;
+  '; background: #111; position: absolute; height: 30px; width: 1000px;
   margin-left: 5px; } */
   .stack {
     display: flex;
@@ -131,7 +131,7 @@
     }
 
     .alignment {
-      grid-area: 3 / 1 / 4 / 3;
+      grid-area: 4 / 3 / 6 / 6;
     }
   }
 
@@ -160,7 +160,7 @@
   }
 
   .left .vblock:last-child input {
-    border-right: 1px solid black;
+    border-right: 1px solid #111;
   }
 
   .center {
@@ -220,13 +220,13 @@
   }
 
   .movement .inlineblock {
-    border: 1px solid black;
+    border: 1px solid #111;
     border-right:
       none;
   }
 
   .movement .inlineblock:last-child {
-    border-right: 1px solid black;
+    border-right: 1px solid #111;
   }
 
   .movement .inlineblock input {
@@ -332,9 +332,9 @@
   .attributes .vblock {
     display: grid;
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    border: 1px solid black;
+    border: 1px solid #111;
     border-top: 0;
   }
 
@@ -345,7 +345,7 @@
   }
 
   .attributes .vblock label {
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 3 / 4;
     padding-left: 0;
     padding-right: 0;
   }
@@ -455,11 +455,7 @@
     grid-area: 2 / 5 / 3 / 6;
   }
 
-  @media screen and (min-width: 400px) {
-    .treasure .vblock {
-      flex-direction: row;
-    }
-  }
+  @media screen and (min-width: 400px) {}
 
   .arrayItem {
     display: flex;
@@ -467,6 +463,12 @@
 
   .arrayItem>* {
     flex: 0 0 auto;
+  }
+
+  button.rollButton {}
+
+  .attributes button.rollButton {
+    grid-area: 2 / 3 / 2 / 4;
   }
 </style>
 
@@ -483,6 +485,8 @@
   {{> hfield label='LVL' name='level' placeholder='0' }}
   {{> hfield label='Title' name='title' placeholder='Title...' }}
   {{> hfield label='HD' name='hitdie' placeholder='Hit Die...' }}
+
+  {{> token-and-portrait }}
 </div>
 
 <div class='attributes grid'>
@@ -502,13 +506,6 @@
 
   {{> attribute label='CHA' name='charisma' placeholder='&mdash;' modifierName='charismaModifier' modifierValue=charismaModifier}}
 </div>
-
-
-<p>Token:</p>
-<asset name="token"></asset>
-
-<p>Portrait:</p>
-<asset name="portrait"></asset>
 
 <div class='combat grid'>
   <div class='header'>
