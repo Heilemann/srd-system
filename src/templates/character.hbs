@@ -466,17 +466,6 @@
   .attributes button.rollButton {
     grid-area: 2 / 3 / 2 / 4;
   }
-
-  .tokenPortrait {
-    grid-area: 6 / 1 / 9 / 6;
-  }
-
-  @media screen and (min-width: 400px) {
-    .tokenPortrait {
-      grid-area: 2 / 1 / 6 / 3;
-      background: green;
-    }
-  }
 </style>
 
 
@@ -493,8 +482,9 @@
   {{> hfield label='Title' name='title' placeholder='Title...' }}
   {{> hfield label='HD' name='hitdie' placeholder='Hit Die...' }}
 
-  {{> token-and-portrait }}
 </div>
+
+{{> token-and-portrait }}
 
 <div class='attributes grid'>
   <div class='header'>
