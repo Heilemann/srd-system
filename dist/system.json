@@ -12,11 +12,7 @@
 			"description": "A player character.",
 			"file": "src/templates/character.hbs",
 			"windowSize": "large",
-			"preview": "src/templates/character-preview.hbs",
-			"thumbnailField": [
-				"portrait",
-				"token"
-			]
+			"thumbnailField": ["portrait", "token"]
 		},
 		{
 			"type": "equipment",
