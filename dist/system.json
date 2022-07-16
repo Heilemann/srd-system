@@ -53,9 +53,8 @@
 	],
 	"grid": {
 		"type": "square",
-		"width": "12",
-		"height": "12",
-		"size": "1",
+		"size": 12,
+		"unitSize": 1,
 		"unit": "m"
 	},
 	"license": "NA"
