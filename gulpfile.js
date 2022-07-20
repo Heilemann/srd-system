@@ -38,7 +38,7 @@ function compileCSS() {
 		.pipe(prefix())
 		.pipe(minify())
 		.pipe(dest('dist/css'))
-		.pipe(browserSync.reload({ stream: true }))
+		.pipe(browserSync.stream())
 }
 
 function jsmin() {
@@ -61,7 +61,7 @@ function jsmin() {
     `),
 		)
 		.pipe(dest('dist/js'))
-		.pipe(browserSync.reload({ stream: true }))
+		.pipe(browserSync.stream())
 }
 
 function optimizeimg() {
@@ -96,7 +96,7 @@ const collatePartials = () => {
 		)
 		.pipe(footer('return partials'))
 		.pipe(dest('dist/js'))
-		.pipe(browserSync.reload({ stream: true }))
+		.pipe(browserSync.stream())
 }
 
 const collateHandlebars = () => {
@@ -114,7 +114,7 @@ const collateHandlebars = () => {
 		.pipe(concat('templates.js'))
 		.pipe(footer('return System.templates'))
 		.pipe(dest('dist/js/'))
-		.pipe(browserSync.reload({ stream: true }))
+		.pipe(browserSync.stream())
 }
 
 const compileYAML = () => {
