@@ -57,11 +57,47 @@
     margin: 10px 0 2px;
   }
 
-  input[type=text] {
+  input[type="text"] {
     width: 100%;
+  }
+
+  input[type="text"],
+  input[type="number"] {
     border-radius: 8px;
     border: none;
     padding: 5px 0 5px 10px;
+  }
+
+  input[type="color"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  ::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  ::-webkit-color-swatch {
+    border: 0;
+    border-radius: 0;
+  }
+
+  ::-moz-color-swatch,
+  ::-moz-focus-inner {
+    border: 0;
+  }
+
+  ::-moz-focus-inner {
+    padding: 0;
   }
 
   input[type=button],

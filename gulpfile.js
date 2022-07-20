@@ -27,7 +27,7 @@ function compileCSS() {
 		.pipe(sass())
 		.pipe(prefix())
 		.pipe(minify())
-		.pipe(dest('/dist/css'))
+		.pipe(dest('dist/css'))
 		.pipe(browserSync.reload({ stream: true }))
 }
 
@@ -155,17 +155,17 @@ function watchTask() {
 }
 
 exports.default = series(
-	parallel(
-		copyConfig,
-		copyUtils,
-		compileCSS,
-		jsmin,
-		optimizeimg,
-		webpImage,
-		collatePartials,
-		collateHandlebars,
-		compileYAML,
-	),
+	// parallel(
+	copyConfig,
+	copyUtils,
+	compileCSS,
+	jsmin,
+	optimizeimg,
+	webpImage,
+	collatePartials,
+	collateHandlebars,
+	compileYAML,
+	// ),
 	watchTask,
 )
 
