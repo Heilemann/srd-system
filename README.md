@@ -3,17 +3,19 @@
 ## Running the SDK
 
 1. Open Terminal to the folder this README.md file is in
-2. Run `node index.js` in one tab
-3. Run `gulp` in another tab
-4. Open [http://localhost:3005](http://localhost:3005)
+2. Run `npm i` if it's the first time.
+3. Run `gulp`
+4. Open [http://localhost:3004](http://localhost:3004)
+
+### Overview
+
+The SDK uses handlebars and a couple of methods of running javascript. Please read this document carefully, as the SDK is powerful, but quite specific in how it works.
 
 ## Instructions
 
 Generally speaking anything you'd want to edit is in `/src`. Everything else is just supporting.
 
-### Overview
-
-The SDK uses handlebars and a couple of methods of running javascript. Please read this document carefully, as the SDK is powerful, but quite specific in how it works.
+Run `gulp` in the terminal to continually build the templates. This also launches a development server at `http://localhost:3004`, where you can see the results of your changes while you're making them. It's not a perfect replica of seeing them actually run, but it'll get you 90% of the way there.
 
 ### Saving and Loading Data
 
@@ -21,7 +23,7 @@ Changes to any form element with the `name` attribute (e.g. `<input name='alignm
 
 ### Scripting
 
-Running custom scripts can happen in two ways: Hooks and Events. See below for how to use either.
+Custom scripts can be run in two ways: Hooks and Events. See below for how to use either.
 
 ### Arrays (Lists)
 

@@ -1,5 +1,5 @@
 // dependencies
-const { src, dest, watch, series, parallel } = require('gulp')
+const { task, src, dest, watch, series, parallel } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const prefix = require('gulp-autoprefixer')
 const minify = require('gulp-clean-css')
@@ -17,15 +17,18 @@ const yaml = require('gulp-yaml')
 const jsonModify = require('gulp-json-modify')
 var path = require('path')
 var filesTokeys = require('gulp-file-contents-to-keys')
-
+var browserSync = require('browser-sync').create()
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 
-function compilecss() {
+// scss -> css -> partial -> compile partial -> concat -> minify -> dest
+
+function compileCSS() {
 	return src('src/scss/*.scss')
 		.pipe(sass())
 		.pipe(prefix())
 		.pipe(minify())
 		.pipe(dest('/dist/css'))
+		.pipe(browserSync.reload({ stream: true }))
 }
 
 function jsmin() {
@@ -48,6 +51,7 @@ function jsmin() {
     `),
 		)
 		.pipe(dest('dist/js'))
+		.pipe(browserSync.reload({ stream: true }))
 }
 
 function optimizeimg() {
@@ -82,25 +86,10 @@ const collatePartials = () => {
 		)
 		.pipe(footer('return partials'))
 		.pipe(dest('dist/js'))
+		.pipe(browserSync.reload({ stream: true }))
 }
 
 const collateHandlebars = () => {
-	// var partials = src(['src/partials/**/*.hbs'])
-	// 	.pipe(handlebars())
-	// 	.pipe(
-	// 		wrap(
-	// 			'Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));',
-	// 			{},
-	// 			{
-	// 				imports: {
-	// 					processPartialName: function (fileName) {
-	// 						return JSON.stringify(path.basename(fileName, '.js'))
-	// 					},
-	// 				},
-	// 			},
-	// 		),
-	// 	)
-
 	var templates = src('src/templates/**/*.hbs')
 		.pipe(handlebars())
 		.pipe(wrap('Handlebars.template(<%= contents %>)'))
@@ -111,12 +100,11 @@ const collateHandlebars = () => {
 			}),
 		)
 
-	// Output both the partials and the templates as dist/js/templates.js
-	// return merge(partials, templates)
 	return merge(templates)
 		.pipe(concat('templates.js'))
 		.pipe(footer('return System.templates'))
 		.pipe(dest('dist/js/'))
+		.pipe(browserSync.reload({ stream: true }))
 }
 
 const copyUtils = () => {
@@ -149,23 +137,28 @@ const compileYAML = () => {
 }
 
 function watchTask() {
-	watch('src/scss/*.scss', compilecss)
+	watch('src/scss/*.scss', compileCSS)
 	watch('src/js/*.js', jsmin)
 	watch('src/images/*.{jpg,png}', optimizeimg)
-	watch('dist/images/*.{jpg,png}', webpImage)
 	watch('src/partials/**/*.hbs', collatePartials)
 	watch('src/templates/**/*.hbs', collateHandlebars)
-	watch('utils/*.html', copyUtils)
-	watch('system.json', copyConfig)
 	watch('src/values.yml', compileYAML)
+	watch('utils/*.html', copyUtils)
+	watch('dist/images/*.{jpg,png}', webpImage)
+	watch('system.json', copyConfig)
+
+	browserSync.init({
+		server: {
+			baseDir: './dist',
+		},
+	})
 }
 
-// default gulp
 exports.default = series(
 	parallel(
 		copyConfig,
 		copyUtils,
-		compilecss,
+		compileCSS,
 		jsmin,
 		optimizeimg,
 		webpImage,
@@ -175,4 +168,5 @@ exports.default = series(
 	),
 	watchTask,
 )
+
 // exports.version = version

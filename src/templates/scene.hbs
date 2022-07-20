@@ -1,0 +1,90 @@
+{{> system-style}}
+
+<script>
+  let sendMessage = (message) => {
+    window.top.postMessage(
+      {
+        source: 'Frame',
+        id: '123',
+        message: 'setScene',
+        data: message
+      },
+      'http://localhost:3000'
+    )
+  }
+</script>
+
+<p>
+  <button onClick="() => { sendMessage({ sceneId: '{{id}}' }) }">Play</button>
+  <button onClick="() => { sendMessage({ sceneId: '{{id}}' }) }">Preview</button>
+</p>
+
+<p style="display: flex">
+  <label for="name" style="width: 40%">Name</label>
+  <input type="text" placeholder="Scene Name..." name="name" />
+</p>
+
+<p style="display: flex">
+  <label for="name" style="width: 40%">Subtitle</label>
+
+  <span>
+    <input type="text" placeholder="Subtitle..." name="subtitle" />
+    <input type="checkbox" name="nameIsSecret" />
+    <label for="name">Hide Information</label>
+  </span>
+</p>
+
+<p>
+  <label for="map">Map</label>
+  <asset name="mapId"></asset>
+</p>
+
+<p>
+  <label for="map">Cover</label>
+  <asset name="coverId"></asset>
+</p>
+
+<p>
+  <input type="radio" id="coverRadio" name="showMap" value=false />
+  <label for="coverRadio">Show Cover</label>
+
+  <input type="radio" id="mapRadio" name="showMap" value=true />
+  <label for="mapRadio">Show Map</label>
+</p>
+
+<!-- grid editor fields including slider  -->
+<div style="display: flex; margin-bottom: 10px; margin-top: 10px;">
+  <div style="margin-right: 10px">
+    <label for="grid">Size</label><br />
+    <input type="number" name="grid.size" placeholder="10..." style="width: 100%" />
+  </div>
+
+  <div style="margin-right: 10px">
+    <label for="map">X</label><br />
+    <input type="number" name="grid.x" placeholder="0..." style="width: 100%" />
+  </div>
+
+  <div>
+    <label for="map">Y</label><br />
+    <input type="number" name="grid.y" placeholder="0..." style="width: 100%" />
+  </div>
+</div>
+
+<div style="display: flex">
+  <div style="margin-right: 10px;">
+    <label for="map">Color</label>
+    <input type="color" name="grid.color" placeholder="white..." />
+  </div>
+
+  <div>
+    <label for="map">Opacity</label>
+    <input type='range' name="grid.opacity" min="0" max="1" step="0.01" />
+  </div>
+</div>
+
+<p style="color: rgba(255,255,255,.3); font-size: 13px">Scene ID: {{id}}</p>
+
+<p>
+  <label for="name">Notes</label></br>
+  <textarea placeholder="Private scene notes..." name="notes"></textarea>
+</p>

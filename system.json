@@ -46,6 +46,14 @@
 			"description": "Things that poke, slash and bonk.",
 			"file": "src/templates/weapon.hbs",
 			"windowSize": "small"
+		},
+		{
+			"type": "scene",
+			"singularName": "Scene",
+			"pluralName": "Scenes",
+			"description": "Place to go, things to see.",
+			"file": "src/templates/scene.hbs",
+			"windowSize": "small"
 		}
 	],
 	"grid": {

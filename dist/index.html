@@ -8,12 +8,12 @@
 
   <style>
     html {
-      background: #000;
+      background: ##eee;
     }
 
     @media (prefers-color-scheme: dark) {
       html {
-        background: #000;
+        background: #040404;
         color: white;
       }
     }
@@ -22,6 +22,44 @@
       border: none;
       margin: 10px;
       border-radius: 20px;
+    }
+
+    #container {
+      display: flex;
+      /* align-items: center;
+      justify-content: center; */
+      height: 100vh;
+    }
+
+    #templates,
+    #hooks {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+    }
+
+    #hooks>*,
+    #templates>* {
+      flex: 0 0 auto;
+    }
+
+    #templates button.active {
+      outline: 2px solid red;
+    }
+
+    #previewContainer {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: flex;
+    }
+
+    #previewSmall {
+      width: 320px;
+    }
+
+    #previewLarge {
+      width: 670px;
     }
   </style>
 
@@ -33,6 +71,22 @@
 
 <body>
   <div id="app"></div>
+
+  <div id="container">
+    <div id="templates">
+      <div id="hooks">
+        <p>Hooks:</p>
+        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">
+          updateValues
+        </button>
+      </div>
+      <p>Templates:</p>
+    </div>
+    <div id="previewContainer">
+      <iframe src="iframe.html" id="previewSmall"></iframe>
+      <iframe src="iframe.html" id="previewLarge"></iframe>
+    </div>
+  </div>
 
   <script>
     const sendMessage = message => {
@@ -74,68 +128,26 @@
               type: 'loadTemplate',
               data: template.type,
             })
+
+            localStorage.setItem('template', template.type)
           })
 
           document.querySelector('#templates').appendChild(el)
         })
       })
+
+    var iFrameLoaded = () => {
+      const template = localStorage.getItem('template')
+      console.log('templates', templates, template)
+      if (template) {
+        sendMessage({
+          type: 'loadTemplate',
+          data: template,
+        })
+      }
+    }
   </script>
 
-  <style>
-    #container {
-      display: flex;
-      /* align-items: center;
-      justify-content: center; */
-      height: 100vh;
-    }
-
-    #templates,
-    #hooks {
-      display: flex;
-      flex-direction: column;
-      width: 120px;
-    }
-
-    #hooks>*,
-    #templates>* {
-      flex: 0 0 auto;
-    }
-
-    #templates button.active {
-      outline: 2px solid red;
-    }
-
-    #previewContainer {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: flex;
-    }
-
-    #previewSmall {
-      width: 320px;
-    }
-
-    #previewLarge {
-      width: 670px;
-    }
-  </style>
-
-  <div id="container">
-    <div id="templates">
-      <div id="hooks">
-        <p>Hooks:</p>
-        <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">
-          updateValues
-        </button>
-      </div>
-      <p>Templates:</p>
-    </div>
-    <div id="previewContainer">
-      <iframe src="iframe.html" id="previewSmall"></iframe>
-      <iframe src="iframe.html" id="previewLarge"></iframe>
-    </div>
-  </div>
 </body>
 
 </html>
