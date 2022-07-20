@@ -22,6 +22,16 @@ var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
 
 // scss -> css -> partial -> compile partial -> concat -> minify -> dest
 
+const copyConfig = () => {
+	return src('system.json')
+		.pipe(jsonModify({ key: 'scripts', value: 'dist/js/scripts.js' }))
+		.pipe(dest('dist/'))
+}
+
+// const copyUtils = () => {
+// 	return src('utils/*').pipe(dest('dist/'))
+// }
+
 function compileCSS() {
 	return src('src/scss/*.scss')
 		.pipe(sass())
@@ -107,15 +117,44 @@ const collateHandlebars = () => {
 		.pipe(browserSync.reload({ stream: true }))
 }
 
-const copyUtils = () => {
-	return src('utils/*').pipe(dest('dist/'))
-}
-
-const copyConfig = () => {
-	return src('system.json')
-		.pipe(jsonModify({ key: 'scripts', value: 'dist/js/scripts.js' }))
+const compileYAML = () => {
+	return src('src/values.yml')
+		.pipe(yaml({ space: 2 }))
 		.pipe(dest('dist/'))
 }
+
+function watchTask() {
+	watch('system.json', copyConfig)
+	// watch('utils/*.html', copyUtils)
+	watch('src/scss/*.scss', compileCSS)
+	watch('src/js/*.js', jsmin)
+	watch('src/images/*.{jpg,png}', optimizeimg)
+	watch('dist/images/*.{jpg,png}', webpImage)
+	watch('src/partials/**/*.hbs', collatePartials)
+	watch('src/templates/**/*.hbs', collateHandlebars)
+	watch('src/values.yml', compileYAML)
+
+	browserSync.init({
+		server: {
+			baseDir: './dist',
+		},
+	})
+}
+
+exports.default = series(
+	// parallel(
+	copyConfig,
+	// copyUtils,
+	compileCSS,
+	jsmin,
+	optimizeimg,
+	webpImage,
+	collatePartials,
+	collateHandlebars,
+	compileYAML,
+	// ),
+	watchTask,
+)
 
 // function version() {
 //   const version = process.argv[4]
@@ -129,44 +168,5 @@ const copyConfig = () => {
 //       .pipe(gulp.dest('./'))
 //   )
 // }
-
-const compileYAML = () => {
-	return src('src/values.yml')
-		.pipe(yaml({ space: 2 }))
-		.pipe(dest('dist/'))
-}
-
-function watchTask() {
-	watch('src/scss/*.scss', compileCSS)
-	watch('src/js/*.js', jsmin)
-	watch('src/images/*.{jpg,png}', optimizeimg)
-	watch('src/partials/**/*.hbs', collatePartials)
-	watch('src/templates/**/*.hbs', collateHandlebars)
-	watch('src/values.yml', compileYAML)
-	watch('utils/*.html', copyUtils)
-	watch('dist/images/*.{jpg,png}', webpImage)
-	watch('system.json', copyConfig)
-
-	browserSync.init({
-		server: {
-			baseDir: './dist',
-		},
-	})
-}
-
-exports.default = series(
-	// parallel(
-	copyConfig,
-	copyUtils,
-	compileCSS,
-	jsmin,
-	optimizeimg,
-	webpImage,
-	collatePartials,
-	collateHandlebars,
-	compileYAML,
-	// ),
-	watchTask,
-)
 
 // exports.version = version

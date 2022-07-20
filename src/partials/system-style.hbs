@@ -41,11 +41,32 @@
 
   h2 {
     position: relative;
-    font-size: 16px;
+    font-size: 10px;
     line-height: 30px;
+    color: #aaa;
     overflow: hidden;
     text-transform: uppercase;
     margin-top: 15px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  h2:before,
+  h2:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid #aaa;
+    margin: auto;
+  }
+
+  h2:before {
+    margin-right: 20px
+  }
+
+  h2:after {
+    margin-left: 20px
   }
 
   p {

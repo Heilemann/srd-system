@@ -14,35 +14,58 @@
   }
 </script>
 
+<style>
+  @media screen and (min-width: 400px) {
+    #media {
+      display: flex;
+    }
+
+    #media>* {
+      flex: 1 1 0px;
+    }
+
+    #media>*:first-child {
+      margin-right: 10px;
+    }
+  }
+</style>
+
 <p style="margin-top: 0">
   <button onClick="() => { sendMessage({ sceneId: '{{id}}' }) }">Play</button>
   <button onClick="() => { sendMessage({ sceneId: '{{id}}' }) }">Preview</button>
 </p>
 
+<h2>Information</h2>
+
 <p style="display: flex">
-  <label for="name" style="width: 40%">Name</label>
-  <input type="text" placeholder="Scene Name..." name="name" />
+  <label for="name" style="width: 40%; flex: 0 0 30%;">Name</label>
+  <span style="flex: 0 0 70%">
+    <input type="text" placeholder="Scene Name..." name="name" />
+  </span>
 </p>
 
 <p style="display: flex">
-  <label for="name" style="width: 40%">Subtitle</label>
-
-  <span>
+  <label for="name" style="width: 40%; flex: 0 0 30%;">Subtitle</label>
+  <span style="flex: 0 0 70%">
     <input type="text" placeholder="Subtitle..." name="subtitle" />
     <input type="checkbox" name="nameIsSecret" />
     <label for="name">Hide Information</label>
   </span>
 </p>
 
-<p>
-  <label for="map">Map</label>
-  <asset name="mapId"></asset>
-</p>
+<h2>Media</h2>
 
-<p>
-  <label for="map">Cover</label>
-  <asset name="coverId"></asset>
-</p>
+<div id="media">
+  <p>
+    <label for="map">Map</label>
+    <asset name="mapId"></asset>
+  </p>
+
+  <p>
+    <label for="map">Cover</label>
+    <asset name="coverId"></asset>
+  </p>
+</div>
 
 <p>
   <input type="radio" id="coverRadio" name="showMap" value=false />
@@ -52,7 +75,8 @@
   <label for="mapRadio">Show Map</label>
 </p>
 
-<!-- grid editor fields including slider  -->
+<h2>Grid</h2>
+
 <div style="display: flex; margin-bottom: 10px; margin-top: 10px;">
   <div style="margin-right: 10px">
     <label for="grid">Size</label><br />
