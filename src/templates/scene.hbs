@@ -38,14 +38,14 @@
 <h2>Information</h2>
 
 <p style="display: flex">
-  <label for="name" style="width: 40%; flex: 0 0 30%;">Name</label>
+  <label for="name" style="flex: 0 0 30%;">Name</label>
   <span style="flex: 0 0 70%">
     <input type="text" placeholder="Scene Name..." name="name" />
   </span>
 </p>
 
 <p style="display: flex">
-  <label for="name" style="width: 40%; flex: 0 0 30%;">Subtitle</label>
+  <label for="name" style="flex: 0 0 30%;">Subtitle</label>
   <span style="flex: 0 0 70%">
     <input type="text" placeholder="Subtitle..." name="subtitle" />
     <input type="checkbox" name="nameIsSecret" />
@@ -55,25 +55,44 @@
 
 <h2>Media</h2>
 
-<div id="media">
-  <p>
-    <label for="map">Map</label>
-    <asset name="mapId"></asset>
-  </p>
+<p style="display: flex">
+  <label style="flex: 0 0 30%">Show</label>
 
-  <p>
-    <label for="map">Cover</label>
-    <asset name="coverId"></asset>
-  </p>
-</div>
+  <span class="tabs">
+    <input type="radio" id="coverRadio" name="showMap" value=false />
+    <label for="coverRadio">Cover</label>
 
-<p>
-  <input type="radio" id="coverRadio" name="showMap" value=false />
-  <label for="coverRadio">Show Cover</label>
-
-  <input type="radio" id="mapRadio" name="showMap" value=true />
-  <label for="mapRadio">Show Map</label>
+    <input type="radio" id="mapRadio" name="showMap" value=true />
+    <label for="mapRadio">Map</label>
+  </span>
 </p>
+
+<p style="display: flex">
+  <label for="coverId" style="flex: 0 0 30%;">Cover</label>
+  <asset name="coverId" style="flex: 0 0 70%;"></asset>
+</p>
+
+<p style="display: flex">
+  <label for="mapId" style="flex: 0 0 30%;">Map</label>
+  <asset name="mapId" style="flex: 0 0 70%;"></asset>
+
+<p style="display: flex">
+  <label for="audioId" style="flex: 0 0 30%;">Audio</label>
+  <asset name="audioId" style="flex: 0 0 70%;"></asset>
+</p>
+
+
+{{#if coverId}}
+  {{#if mapId}}
+    <p>
+      <label for="coverRadio">Show Cover</label>
+      <input type="radio" id="coverRadio" name="showMap" value=false />
+
+      <label for="mapRadio">Show Map</label>
+      <input type="radio" id="mapRadio" name="showMap" value=true />
+    </p>
+  {{/if}}
+{{/if}}
 
 <h2>Grid</h2>
 
@@ -104,7 +123,8 @@
   </div>
 </div>
 
+<h2>Notes</h2>
+
 <p>
-  <label for="name">Notes</label></br>
   <textarea placeholder="Private scene notes..." name="notes"></textarea>
 </p>
