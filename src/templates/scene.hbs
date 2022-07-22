@@ -48,10 +48,16 @@
   <label for="name" style="flex: 0 0 30%;">Subtitle</label>
   <span style="flex: 0 0 70%">
     <input type="text" placeholder="Subtitle..." name="subtitle" />
-    <input type="checkbox" name="nameIsSecret" />
-    <label for="name">Hide Information</label>
   </span>
 </p>
+
+<p style="display: flex">
+  <label for="name" style="flex: 0 0 30%;">Secret</label>
+  <span style="flex: 0 0 70%">
+    <input type="checkbox" name="nameIsSecret" />
+  </span>
+</p>
+
 
 <h2>Media</h2>
 
@@ -67,20 +73,20 @@
   </span>
 </p>
 
-<p style="display: flex">
+<div style="display: flex; margin-top: 10px;">
   <label for="coverId" style="flex: 0 0 30%;">Cover</label>
   <asset name="coverId" style="flex: 0 0 70%;"></asset>
-</p>
+</div>
 
-<p style="display: flex">
+<div style="display: flex; margin-top: 10px;">
   <label for="mapId" style="flex: 0 0 30%;">Map</label>
   <asset name="mapId" style="flex: 0 0 70%;"></asset>
+</div>
 
-<p style="display: flex">
+{{!-- <div style="display: flex; margin-top: 10px;">
   <label for="audioId" style="flex: 0 0 30%;">Audio</label>
   <asset name="audioId" style="flex: 0 0 70%;"></asset>
-</p>
-
+</div> --}}
 
 {{#if coverId}}
   {{#if mapId}}
