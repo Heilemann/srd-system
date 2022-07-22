@@ -12,6 +12,7 @@
 			"description": "A player character.",
 			"file": "src/templates/character.hbs",
 			"windowSize": "large",
+			"permissions": "write",
 			"thumbnailField": ["portrait", "token"]
 		},
 		{
@@ -20,7 +21,8 @@
 			"pluralName": "Equipment",
 			"description": "A piece of equipment.",
 			"file": "src/templates/equipment.hbs",
-			"windowSize": "small"
+			"windowSize": "small",
+			"permissions": "write"
 		},
 		{
 			"type": "npc",
@@ -28,7 +30,8 @@
 			"pluralName": "NPCs",
 			"description": "A non player character.",
 			"file": "src/templates/npc.hbs",
-			"windowSize": "medium"
+			"windowSize": "medium",
+			"permissions": "none"
 		},
 		{
 			"type": "spells",
@@ -36,7 +39,8 @@
 			"pluralName": "Spells",
 			"description": "A magic effect.",
 			"file": "src/templates/spell.hbs",
-			"windowSize": "medium"
+			"windowSize": "medium",
+			"permissions": "full"
 		},
 		{
 			"type": "weapons",
@@ -44,7 +48,8 @@
 			"pluralName": "Weapons",
 			"description": "Things that poke, slash and bonk.",
 			"file": "src/templates/weapon.hbs",
-			"windowSize": "small"
+			"windowSize": "small",
+			"permissions": "full"
 		}
 	],
 	"grid": {
