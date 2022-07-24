@@ -43,7 +43,7 @@
 				"write": "src/templates/npc.hbs"
 			},
 			"windowSize": "medium",
-			"allowCreate": "true"
+			"allowCreate": "false"
 		},
 		{
 			"type": "spells",
@@ -55,7 +55,7 @@
 				"write": "src/templates/spell.hbs"
 			},
 			"windowSize": "medium",
-			"allowCreate": "true"
+			"allowCreate": "false"
 		},
 		{
 			"type": "weapons",
@@ -67,7 +67,7 @@
 				"write": "src/templates/weapon.hbs"
 			},
 			"windowSize": "small",
-			"allowCreate": "true"
+			"allowCreate": "false"
 		}
 	],
 	"grid": {
