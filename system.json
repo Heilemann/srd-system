@@ -10,46 +10,61 @@
 			"singularName": "Character",
 			"pluralName": "Characters",
 			"description": "A player character.",
-			"file": "src/templates/character.hbs",
+			"templates": {
+				"write": "src/templates/character.hbs",
+				"read": "src/templates/character.hbs"
+			},
 			"windowSize": "large",
-			"permissions": "write",
-			"thumbnailField": ["portrait", "token"]
+			"thumbnailField": ["portrait", "token"],
+			"allowCreate": "true"
 		},
 		{
 			"type": "equipment",
 			"singularName": "Equipment",
 			"pluralName": "Equipment",
 			"description": "A piece of equipment.",
-			"file": "src/templates/equipment.hbs",
+			"templates": {
+				"read": "src/templates/equipment.hbs",
+				"write": "src/templates/equipment.hbs"
+			},
 			"windowSize": "small",
-			"permissions": "write"
+			"allowCreate": "true"
 		},
 		{
 			"type": "npc",
 			"singularName": "NPC",
 			"pluralName": "NPCs",
 			"description": "A non player character.",
-			"file": "src/templates/npc.hbs",
+			"templates": {
+				"read": "src/templates/npc.hbs",
+				"write": "src/templates/npc.hbs"
+			},
 			"windowSize": "medium",
-			"permissions": "none"
+			"allowCreate": "true"
 		},
 		{
 			"type": "spells",
 			"singularName": "Spell",
 			"pluralName": "Spells",
 			"description": "A magic effect.",
-			"file": "src/templates/spell.hbs",
+			"templates": {
+				"read": "src/templates/spell.hbs",
+				"write": "src/templates/spell.hbs"
+			},
 			"windowSize": "medium",
-			"permissions": "full"
+			"allowCreate": "true"
 		},
 		{
 			"type": "weapons",
 			"singularName": "Weapon",
 			"pluralName": "Weapons",
 			"description": "Things that poke, slash and bonk.",
-			"file": "src/templates/weapon.hbs",
+			"templates": {
+				"read": "src/templates/weapon.hbs",
+				"write": "src/templates/weapon.hbs"
+			},
 			"windowSize": "small",
-			"permissions": "full"
+			"allowCreate": "true"
 		}
 	],
 	"grid": {
