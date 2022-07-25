@@ -1,6 +1,6 @@
 {
 	"name": "Old School Essentials",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"author": "Michael Heilemann",
 	"description": "System support for Old School Essentials (and other similar games, like B/X).",
 	"scripts": "dist/js/scripts.js",
