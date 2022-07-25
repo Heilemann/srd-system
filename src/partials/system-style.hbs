@@ -43,7 +43,7 @@
     position: relative;
     font-size: 10px;
     line-height: 30px;
-    color: #565656;
+    color: #777;
     overflow: hidden;
     text-transform: uppercase;
     margin-top: 15px;
@@ -57,7 +57,10 @@
   h2:after {
     content: "";
     flex: 1 1;
-    border-bottom: 1px solid #565656;
+    /* border-bottom: 1px solid #565656; */
+    height: 2px;
+    background: #777;
+    border-radius: 100px;
     margin: auto;
   }
 
@@ -67,6 +70,14 @@
 
   h2:after {
     margin-left: 20px
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    h2:before,
+    h2:after {
+      background: #eee;
+    }
   }
 
   p {
@@ -126,8 +137,6 @@
     border-radius: 8px;
     padding: 5px 10px;
     border: none;
-    background: #333;
-    color: white;
   }
 
   input[type="checkbox"] {
@@ -161,9 +170,9 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    background: #333;
     border-radius: 8px;
     overflow: hidden;
+    background: white;
   }
 
   .tabs input {
@@ -183,11 +192,11 @@
   }
 
   .tabs>*:hover {
-    background: #ddd;
+    background: #eee;
   }
 
   .tabs>input:checked+label {
-    background: #ddd;
+    background: #eee;
   }
 
   @media (prefers-color-scheme: dark) {
