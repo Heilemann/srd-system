@@ -138,14 +138,12 @@
       })
 
     var iFrameLoaded = () => {
-      const selectedCollectionType = localStorage.getItem('selectedCollectionType')
+      const selectedCollectionType = localStorage.getItem('selectedCollectionType') || ''
 
-      if (collection) {
-        sendMessage({
-          type: 'loadTemplate',
-          data: selectedCollectionType,
-        })
-      }
+      sendMessage({
+        type: 'loadTemplate',
+        data: selectedCollectionType,
+      })
     }
   </script>
 

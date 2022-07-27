@@ -52,22 +52,22 @@
       parent.postMessage(message, '*')
     }
 
-    window.addEventListener('message', (e) => {
-      const message = e.data
-      console.log('frame heard message', message)
-
-      if (message.type === 'loadTemplate') {
-        loadTemplate(message.data)
-      }
-    })
-
     // load the given (compiled) handlebars template
     const loadTemplate = (selectedCollectionType) => {
+      console.log('load template for', selectedCollectionType, Object.keys(templates), templates[selectedCollectionType])
+
       localStorage.setItem('selectedCollectionType', selectedCollectionType)
 
-      document.getElementById('templateContainer').innerHTML = templates[selectedCollectionType](
+      if (!templates[selectedCollectionType]) {
+        console.log('couldnt load template for', selectedCollectionType)
+      }
+
+      const html = templates[selectedCollectionType](
         // data[selectedCollectionType]
       )
+      console.log('html', html)
+
+      document.getElementById('templateContainer').innerHTML = html
 
       // onchange every input -> 
       // messageParent ->
@@ -85,7 +85,8 @@
       .then(response => response.text())
       .then(loadedTemplates => {
         templates = evaluateScripts(loadedTemplates)
-        console.log('===> templates', loadedTemplates)
+
+        console.log('loaded templates', templates)
 
         fetch('./js/scripts.js')
           .then(response => response.text())
@@ -110,21 +111,30 @@
                   })
                 }
 
-                fetch('values.json')
-                  .then(response => response.json())
-                  .then(values => {
-                    const t = localStorage.getItem('template') || templates[0].type
+                // fetch('values.json')
+                //   .then(response => response.json())
+                //   .then(values => {
+                //     const t = localStorage.getItem('selectedCollectionType')
 
-                    // console.log('values', values.character, t)
+                //     // console.log('values', values.character, t)
 
-                    // loadTemplate('character', values['character'])
-                    loadTemplate(t, values['character'])
-                  })
+                //     // loadTemplate('character', values['character'])
+                //     loadTemplate(t, values['character'])
+                //   })
+
+                window.addEventListener('message', (e) => {
+                  const message = e.data
+
+                  if (message.type === 'loadTemplate') {
+                    loadTemplate(message.data)
+                  }
+                })
+
+                parent.iFrameLoaded()
               })
           })
       })
 
-    parent.iFrameLoaded()
   </script>
 </body>
 

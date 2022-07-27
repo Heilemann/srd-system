@@ -46,7 +46,7 @@
 			"allowCreate": "false"
 		},
 		{
-			"type": "spells",
+			"type": "spell",
 			"singularName": "Spell",
 			"pluralName": "Spells",
 			"description": "A magic effect.",
@@ -58,7 +58,7 @@
 			"allowCreate": "false"
 		},
 		{
-			"type": "weapons",
+			"type": "weapon",
 			"singularName": "Weapon",
 			"pluralName": "Weapons",
 			"description": "Things that poke, slash and bonk.",

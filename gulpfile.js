@@ -111,6 +111,7 @@ const collateHandlebars = () => {
 
 	return merge(templates)
 		.pipe(concat('templates.js'))
+		.pipe(terser())
 		.pipe(footer('return System.templates'))
 		.pipe(dest('dist/js/'))
 		.pipe(browserSync.stream())
