@@ -62,11 +62,11 @@
     })
 
     // load the given (compiled) handlebars template
-    const loadTemplate = (template) => {
-      localStorage.setItem('template', template)
+    const loadTemplate = (selectedCollectionType) => {
+      localStorage.setItem('selectedCollectionType', selectedCollectionType)
 
-      document.getElementById('templateContainer').innerHTML = templates[template](
-        // data[template]
+      document.getElementById('templateContainer').innerHTML = templates[selectedCollectionType](
+        // data[selectedCollectionType]
       )
 
       // onchange every input -> 
@@ -85,6 +85,7 @@
       .then(response => response.text())
       .then(loadedTemplates => {
         templates = evaluateScripts(loadedTemplates)
+        console.log('===> templates', loadedTemplates)
 
         fetch('./js/scripts.js')
           .then(response => response.text())

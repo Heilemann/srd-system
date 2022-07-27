@@ -31,7 +31,7 @@
       height: 100vh;
     }
 
-    #templates,
+    #Collections,
     #hooks {
       display: flex;
       flex-direction: column;
@@ -39,11 +39,11 @@
     }
 
     #hooks>*,
-    #templates>* {
+    #Collections>* {
       flex: 0 0 auto;
     }
 
-    #templates button.active {
+    #Collections button.active {
       outline: 2px solid red;
     }
 
@@ -73,14 +73,15 @@
   <div id="app"></div>
 
   <div id="container">
-    <div id="templates">
+    <div id="collections">
       <div id="hooks">
         <p>Hooks:</p>
         <button onclick="sendMessage({type: 'hook', data: 'updateValues'})">
           updateValues
         </button>
       </div>
-      <p>Templates:</p>
+
+      <p>Collections:</p>
     </div>
     <div id="previewContainer">
       <iframe src="iframe.html" id="previewSmall"></iframe>
@@ -107,18 +108,18 @@
     fetch('system.json')
       .then(response => response.json())
       .then(systemConfig => {
-        console.log(systemConfig)
+        console.log('---->', systemConfig)
 
-        const templates = systemConfig.templates
+        const collections = systemConfig.collections
 
-        templates.forEach(template => {
+        collections.forEach(collection => {
           const el = document.createElement('button')
-          const label = document.createTextNode(template.singularName)
+          const label = document.createTextNode(collection.singularName)
 
           el.appendChild(label)
 
           el.addEventListener('click', e => {
-            document.querySelectorAll('#templates button').forEach(button => {
+            document.querySelectorAll('#collections button').forEach(button => {
               button.classList.remove('active')
             })
 
@@ -126,23 +127,23 @@
 
             sendMessage({
               type: 'loadTemplate',
-              data: template.type,
+              data: collection.type,
             })
 
-            localStorage.setItem('template', template.type)
+            localStorage.setItem('selectedCollectionType', collection.type)
           })
 
-          document.querySelector('#templates').appendChild(el)
+          document.querySelector('#collections').appendChild(el)
         })
       })
 
     var iFrameLoaded = () => {
-      const template = localStorage.getItem('template')
-      console.log('templates', templates, template)
-      if (template) {
+      const selectedCollectionType = localStorage.getItem('selectedCollectionType')
+
+      if (collection) {
         sendMessage({
           type: 'loadTemplate',
-          data: template,
+          data: selectedCollectionType,
         })
       }
     }

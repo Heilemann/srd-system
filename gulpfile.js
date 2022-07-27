@@ -15,7 +15,6 @@ const concat = require('gulp-concat')
 const merge = require('merge-stream')
 const yaml = require('gulp-yaml')
 const jsonModify = require('gulp-json-modify')
-var path = require('path')
 var filesTokeys = require('gulp-file-contents-to-keys')
 var browserSync = require('browser-sync').create()
 var systemConfig = JSON.parse(fs.readFileSync('./system.json'))
@@ -28,9 +27,9 @@ const copyConfig = () => {
 		.pipe(dest('dist/'))
 }
 
-// const copyUtils = () => {
-// 	return src('utils/*').pipe(dest('dist/'))
-// }
+const copyUtils = () => {
+	return src('utils/*').pipe(dest('dist/'))
+}
 
 function compileCSS() {
 	return src('src/scss/*.scss')
@@ -125,7 +124,7 @@ const compileYAML = () => {
 
 function watchTask() {
 	watch('system.json', copyConfig)
-	// watch('utils/*.html', copyUtils)
+	watch('utils/*.html', copyUtils)
 	watch('src/scss/*.scss', compileCSS)
 	watch('src/js/*.js', jsmin)
 	watch('src/images/*.{jpg,png}', optimizeimg)
@@ -144,7 +143,7 @@ function watchTask() {
 exports.default = series(
 	// parallel(
 	copyConfig,
-	// copyUtils,
+	copyUtils,
 	compileCSS,
 	jsmin,
 	optimizeimg,
